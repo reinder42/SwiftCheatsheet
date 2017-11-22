@@ -2,7 +2,7 @@
 
 A cheatsheet for Swift 4. Including examples of common Swift code and explanations of what it does and how it works. Perfect for beginner iOS developers!
 
-**[Go to the cheatsheet](https://github.com/reinder42/SwiftCheatsheet/blob/master/.github/swift-4-cheatsheet.md)**
+**[Go to the cheatsheet](https://github.com/reinder42/SwiftCheatsheet/blob/master/swift-4-cheatsheet.md)**
 
 ## How to Use
 
@@ -18,7 +18,7 @@ Want to help create the most comprehensive (and concise!) Swift cheatsheet ever?
 - Add your own code examples by creating a Pull Request
 - Share this cheatsheet with iOS developers you know to spread the word
 
-For more information, please check the [contribution guidelines](https://github.com/reinder42/SwiftCheatsheet/blob/master/.github/CONTRIBUTING.md).
+For more information, please check the [contribution guidelines](https://github.com/reinder42/SwiftCheatsheet/blob/master/CONTRIBUTING.md).
 
 Distributed under the MIT license. See LICENSE for more information.
 
