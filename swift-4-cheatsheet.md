@@ -225,7 +225,7 @@ One last thing... the _nil-coalescing operator_. You can use it to provide a def
 
     var meaningOfLife = deepThought.think() ?? 42
 
-See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOfLife` is `nil`. When that function returns a value, it's assigned to `meaningOfLife`.
+See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOfLife` is `42`. When that function returns a value, it's assigned to `meaningOfLife`.
 
 ## Arrays
 
