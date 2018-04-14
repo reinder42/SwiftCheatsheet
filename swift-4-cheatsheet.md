@@ -168,6 +168,36 @@ When you don't know how many times a loop needs to run _exactly_, you can use a 
         b -= 1
     }
 
+### Switch
+
+A `switch` statement takes a value and compares it against one of several _cases_. It's similar to the `if-else if-else` conditional, and it's an elegant way of dealing with multiple states.
+
+An example:
+    
+    let weather = ...
+
+    switch weather 
+    {
+        case .rain:
+            print("Bring a raincoat!")
+        case .clear, .sunny:
+            print("Don't forget your sunglasses.")
+        case .overcast:
+            print("It's really depressing.")
+        case .tsunami, .earthquake:
+            print("OH NO! BIG WAVE!")
+        default:
+            print("Expect the best, prepare for the worst.")
+    }
+
+In Swift, `switch` statements don't have an implicit _fall-through_, but you can use `fallthrough` explicitly. Every case needs to have at least one line of code in it. 
+
+The `switch` statement only executes one case. As such, you don't have to use a `break` explicitly to end a case. You can use it to break out of a case, though. 
+
+The `switch` cases need to be _exhaustive_, or you need to provide a `default` case. For instance, when you're working with an `enum`, you'll need to incorporate every value in the enumeration.
+
+You can also use Swift _ranges_ to match interval for numbers, use tuples to match partial values, and use Swift's `where` keyword to check for additional conditions.
+
 ## Strings
 
 Strings are pretty cool. Here's an example:
