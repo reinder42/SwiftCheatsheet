@@ -209,6 +209,37 @@ else
 }
 </code></pre>
 
+<h3>Switch</h3>
+
+<p>A <code>switch</code> statement takes a value and compares it against one of several <em>cases</em>. It&#8217;s similar to the <code>if-else if-else</code> conditional, and it&#8217;s an elegant way of dealing with multiple states.</p>
+
+<p>An example:</p>
+
+<pre><code>let weather = ...
+
+switch weather  
+{
+    case .rain:  
+        print(&quot;Bring a raincoat!&quot;)  
+    case .clear, .sunny:  
+        print(&quot;Don't forget your sunglasses.&quot;)  
+    case .overcast:  
+        print(&quot;It's really depressing.&quot;)  
+    case .tsunami, .earthquake:  
+        print(&quot;OH NO! BIG WAVE!&quot;)  
+    default:  
+        print(&quot;Expect the best, prepare for the worst.&quot;)  
+}
+</code></pre>
+
+<p>In Swift, <code>switch</code> statements don&#8217;t have an implicit <em>fall-through</em>, but you can use <code>fallthrough</code> explicitly. Every case needs to have at least one line of code in it. </p>
+
+<p>The <code>switch</code> statement only executes one case. As such, you don&#8217;t have to use a <code>break</code> explicitly to end a case. You can use it to break out of a case, though. </p>
+
+<p>The <code>switch</code> cases need to be <em>exhaustive</em>, or you need to provide a <code>default</code> case. For instance, when you&#8217;re working with an <code>enum</code>, you&#8217;ll need to incorporate every value in the enumeration.</p>
+
+<p>You can also use Swift <em>ranges</em> to match interval for numbers, use tuples to match partial values, and use Swift&#8217;s <code>where</code> keyword to check for additional conditions.</p>
+
 <h2>Strings</h2>
 
 <p>Strings are pretty cool. Here&#8217;s an example:</p>
@@ -275,7 +306,7 @@ if droid != nil {
 <pre><code>var meaningOfLife = deepThought.think() ?? 42
 </code></pre>
 
-<p>See that <code>??</code>. When <code>deepThought.think()</code> returns <code>nil</code>, the variable <code>meaningOfLife</code> is <code>nil</code>. When that function returns a value, it&#8217;s assigned to <code>meaningOfLife</code>.</p>
+<p>See that <code>??</code>. When <code>deepThought.think()</code> returns <code>nil</code>, the variable <code>meaningOfLife</code> is <code>42</code>. When that function returns a value, it&#8217;s assigned to <code>meaningOfLife</code>.</p>
 
 <h2>Arrays</h2>
 
@@ -487,6 +518,20 @@ catch let error {
 </code></pre>
 
 <p>In the example above, the <code>processPayment(creditcard:)</code> function is marked with the <code>try</code> keyword. When an error occurs, the <code>catch</code> block is executed.</p>
+
+<h2>Resources</h2>
+
+<p>No cheatsheet is complete without a list of resources with more information. Wanna see how deep the rabbit hole really goes?</p>
+
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html">Swift Language Guide</a></li>
+<li><a href="https://apple.github.io/swift-evolution/">Swift Evolution</a></li>
+<li><a href="https://developer.apple.com/documentation/swift">Swift Standard Library</a></li>
+<li><a href="https://developer.apple.com/documentation/">Apple Developer Documentation</a></li>
+<li><a href="https://github.com/vsouza/awesome-ios">https://github.com/vsouza/awesome-ios</a></li>
+<li><a href="https://github.com/matteocrippa/awesome-swift">https://github.com/matteocrippa/awesome-swift</a></li>
+<li><a href="http://online.swiftplayground.run/">http://online.swiftplayground.run/</a></li>
+</ul>
 <!-- ##END MARKED WRAPPER## -->
     </div>
 
