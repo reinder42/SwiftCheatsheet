@@ -1,6 +1,10 @@
 # Swift 4 Cheatsheet
 
-## Variables
+### Table Of Contents
+- [Variables](#variables)
+- etc
+
+## <a name="variables"></a>Variables
 
 Use `var` for variables that can change ("mutable") and `let` for constants that can't change ("non-mutable"). Variable, constant – it's in the name!
 
