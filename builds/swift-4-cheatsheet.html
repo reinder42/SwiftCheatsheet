@@ -22,7 +22,37 @@ html,body,#wrapper{font-size:10pt!important}
   <div id="wrapper">
       <h1>Swift 4 Cheatsheet</h1>
 
-<h2>Variables</h2>
+<h2>Table Of Contents</h2>
+
+<ul>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#oop">Classes, Objects, Properties</a></li>
+<li><a href="#control-flow">Control Flow</a>
+
+<ul>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#loops">Loops</a></li>
+<li><a href="#switch">Switch</a></li>
+</ul></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#optionals">Optionals</a></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#dictionaries">Dictionaries</a></li>
+<li><a href="#closures">Closures</a></li>
+<li><a href="#guard-defer">Guard and Defer</a>
+
+<ul>
+<li><a href="#guard">Guard</a></li>
+<li><a href="#defer">Defer</a></li>
+</ul></li>
+<li><a href="#generics">Generics</a></li>
+<li><a href="#tuples">Tuples</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+
+<h2><a name="variables"></a>Variables</h2>
 
 <p>Use <code>var</code> for variables that can change (&#8220;mutable&#8221;) and <code>let</code> for constants that can&#8217;t change (&#8220;non-mutable&#8221;). Variable, constant – it&#8217;s in the name!</p>
 
@@ -75,7 +105,7 @@ let c = a + b
 <pre><code>var optionalMessage: String?
 </code></pre>
 
-<h2>Functions</h2>
+<h2><a name="functions"></a> Functions</h2>
 
 <p><em>Functions</em> are containers of Swift code. They have input and output. You often use functions to create abstractions in your code, and to make your code reusable.</p>
 
@@ -100,7 +130,7 @@ let c = a + b
 
 <p>When using documentation, or in courses, you&#8217;ll often see a special function syntax. Like this: <code>greetUser(name:bySaying:)</code>. See how it leaves some stuff out? This makes it easier to talk about the function.</p>
 
-<h2>Classes, Objects, Properties</h2>
+<h2><a name="oop"></a> Classes, Objects, Properties</h2>
 
 <p>Classes are basic building blocks for apps. They can contain functions, sometimes called <em>methods</em>, and variables, called <em>properties</em>.</p>
 
@@ -133,9 +163,9 @@ let c = a + b
 
 <p>The function <code>init()</code> is <em>overridden</em> from the superclass <code>Building</code>. The class <code>Office</code> is a <em>subclass</em> of <code>Building</code>, so it inherits all functions and properties that <code>Building</code> has.</p>
 
-<h2>Control Flow</h2>
+<h2><a name="control-flow"></a> Control Flow</h2>
 
-<h3>Conditionals</h3>
+<h3><a name="conditionals"></a> Conditionals</h3>
 
 <p>This is an <code>if</code>-statement, or <em>conditional</em>. You use them to make decisions based on logic.</p>
 
@@ -183,7 +213,7 @@ else
 }
 </code></pre>
 
-<h3>Loops</h3>
+<h3><a name="loops"></a> Loops</h3>
 
 <p>Loops repeat stuff. It&#8217;s that easy. Like this:</p>
 
@@ -209,7 +239,7 @@ else
 }
 </code></pre>
 
-<h3>Switch</h3>
+<h3><a name="switch"></a> Switch</h3>
 
 <p>A <code>switch</code> statement takes a value and compares it against one of several <em>cases</em>. It&#8217;s similar to the <code>if-else if-else</code> conditional, and it&#8217;s an elegant way of dealing with multiple states.</p>
 
@@ -240,7 +270,7 @@ switch weather
 
 <p>You can also use Swift <em>ranges</em> to match interval for numbers, use tuples to match partial values, and use Swift&#8217;s <code>where</code> keyword to check for additional conditions.</p>
 
-<h2>Strings</h2>
+<h2><a name="strings"></a> Strings</h2>
 
 <p>Strings are pretty cool. Here&#8217;s an example:</p>
 
@@ -265,7 +295,7 @@ let numberAsString = &quot;\(number)&quot;
 let numberAsInt = Int(number)
 </code></pre>
 
-<h2>Optionals</h2>
+<h2><a name="optionals"></a> Optionals</h2>
 
 <p><em>Optionals</em> can either be <code>nil</code> or contain a value. You <strong>must</strong> always <em>unwrap</em> an optional before you can use it.</p>
 
@@ -308,7 +338,7 @@ if droid != nil {
 
 <p>See that <code>??</code>. When <code>deepThought.think()</code> returns <code>nil</code>, the variable <code>meaningOfLife</code> is <code>42</code>. When that function returns a value, it&#8217;s assigned to <code>meaningOfLife</code>.</p>
 
-<h2>Arrays</h2>
+<h2><a name="arrays"></a> Arrays</h2>
 
 <p>Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have <em>numerical</em> index values. Arrays always contain elements of the same type.</p>
 
@@ -334,7 +364,7 @@ if droid != nil {
 }
 </code></pre>
 
-<h2>Dictionaries</h2>
+<h2><a name="dictionaries"></a> Dictionaries</h2>
 
 <p>Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:</p>
 
@@ -360,7 +390,7 @@ if droid != nil {
 }
 </code></pre>
 
-<h2>Closures</h2>
+<h2><a name="closures"></a> Closures</h2>
 
 <p>With <em>closures</em> you can pass around blocks of code, like functions, as if they are variables. You use them, for instance, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.</p>
 
@@ -390,9 +420,9 @@ if droid != nil {
 
 <p>In the above example, the last argument of <code>asyncAfter(deadline:execute:)</code> is a closure. It uses the <em>trailing closure</em> syntax. When a closure is the last argument of a function call, you can write it after the function call parentheses and omit the argument label.</p>
 
-<h2>Guard and Defer</h2>
+<h2><a name="guard-defer"></a> Guard and Defer</h2>
 
-<h3>Guard</h3>
+<h3><a name="guard"></a> Guard</h3>
 
 <p>The <code>guard</code> statement helps you to return functions early. It&#8217;s a conditional, and when it isn&#8217;t met you need to exit the function with <code>return</code>.</p>
 
@@ -409,7 +439,7 @@ if droid != nil {
 
 <p>You can read that as: <em>&#8220;Guard that the User ID is greater than zero, or else, exit this function&#8221;</em>. Guard is especially powerful when you have multiple conditions that should return the function.</p>
 
-<h3>Defer</h3>
+<h3><a name="defer"></a> Defer</h3>
 
 <p>With <code>defer</code> you can define a code block that&#8217;s executed when your function returns. The <code>defer</code> statement is similar to <code>guard</code>, because it also helps with the flow of your code. </p>
 
@@ -441,7 +471,7 @@ if droid != nil {
 
 <p>Thanks to <code>defer</code>, the file is always closed when the function returns.</p>
 
-<h2>Generics</h2>
+<h2><a name="generics"></a> Generics</h2>
 
 <p>In Swift your variables are <em>strong typed</em>. When you set the type of animals your farm can contain to <code>Duck</code>, you can&#8217;t change that later on. With <em>generics</em> however, you can!</p>
 
@@ -457,7 +487,7 @@ if droid != nil {
 
 <p>If you want to insert ducks, cows, birds and chickens in your farm, you can now do that with one function instead of 4.</p>
 
-<h2>Tuples</h2>
+<h2><a name="tuples"></a> Tuples</h2>
 
 <p>With <em>tuples</em> you get two (or more) variables for one. They help you structure your code better. Like this:</p>
 
@@ -485,7 +515,7 @@ print(flight.heading)
 // Output: North
 </code></pre>
 
-<h2>Error Handling</h2>
+<h2><a name="error-handling"></a> Error Handling</h2>
 
 <p>Errors in Swift can be thrown, and should be caught. You can define an error type like this:</p>
 
@@ -519,7 +549,7 @@ catch let error {
 
 <p>In the example above, the <code>processPayment(creditcard:)</code> function is marked with the <code>try</code> keyword. When an error occurs, the <code>catch</code> block is executed.</p>
 
-<h2>Resources</h2>
+<h2><a name="resources"></a> Resources</h2>
 
 <p>No cheatsheet is complete without a list of resources with more information. Wanna see how deep the rabbit hole really goes?</p>
 
