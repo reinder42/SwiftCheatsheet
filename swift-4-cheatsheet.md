@@ -1,8 +1,26 @@
 # Swift 4 Cheatsheet
 
-### Table Of Contents
+## Table Of Contents
+
 - [Variables](#variables)
-- etc
+- [Functions](#functions)
+- [Classes, Objects, Properties](#oop)
+- [Control Flow](#control-flow)
+    + [Conditionals](#conditionals)
+    + [Loops](#loops)
+    + [Switch](#switch)
+- [Strings](#strings)
+- [Optionals](#optionals)
+- [Arrays](#arrays)
+- [Dictionaries](#dictionaries)
+- [Closures](#closures)
+- [Guard and Defer](#guard-defer)
+    + [Guard](#guard)
+    + [Defer](#defer)
+- [Generics](#generics)
+- [Tuples](#tuples)
+- [Error Handling](#error-handling)
+- [Resources](#resources)
 
 ## <a name="variables"></a>Variables
 
@@ -48,7 +66,7 @@ Variables can be _optional_, which means it either contains a value or it's `nil
 
     var optionalMessage: String?
 
-## Functions
+## <a name="functions"></a> Functions
 
 _Functions_ are containers of Swift code. They have input and output. You often use functions to create abstractions in your code, and to make your code reusable.
 
@@ -71,7 +89,7 @@ See how the function gets two "input" arguments and one "output" value? See how 
 
 When using documentation, or in courses, you'll often see a special function syntax. Like this: `greetUser(name:bySaying:)`. See how it leaves some stuff out? This makes it easier to talk about the function.
 
-## Classes, Objects, Properties
+## <a name="oop"></a> Classes, Objects, Properties
 
 Classes are basic building blocks for apps. They can contain functions, sometimes called _methods_, and variables, called _properties_.
 
@@ -103,9 +121,9 @@ Properties are variables that belong to a class instance. This class has 4 of th
 
 The function `init()` is _overridden_ from the superclass `Building`. The class `Office` is a _subclass_ of `Building`, so it inherits all functions and properties that `Building` has.
 
-## Control Flow
+## <a name="control-flow"></a> Control Flow
 
-### Conditionals
+### <a name="conditionals"></a> Conditionals
 
 This is an `if`-statement, or _conditional_. You use them to make decisions based on logic.
 
@@ -149,7 +167,7 @@ Conditionals can be challenging to comprehend. Like this:
         print("Will this ever happen?")
     }
 
-### Loops
+### <a name="loops"></a> Loops
 
 Loops repeat stuff. It's that easy. Like this:
 
@@ -172,7 +190,7 @@ When you don't know how many times a loop needs to run _exactly_, you can use a 
         b -= 1
     }
 
-### Switch
+### <a name="switch"></a> Switch
 
 A `switch` statement takes a value and compares it against one of several _cases_. It's similar to the `if-else if-else` conditional, and it's an elegant way of dealing with multiple states.
 
@@ -202,7 +220,7 @@ The `switch` cases need to be _exhaustive_, or you need to provide a `default` c
 
 You can also use Swift _ranges_ to match interval for numbers, use tuples to match partial values, and use Swift's `where` keyword to check for additional conditions.
 
-## Strings
+## <a name="strings"></a> Strings
 
 Strings are pretty cool. Here's an example:
 
@@ -223,7 +241,7 @@ And vice-versa:
     let number = "42"
     let numberAsInt = Int(number)
 
-## Optionals
+## <a name="optionals"></a> Optionals
 
 _Optionals_ can either be `nil` or contain a value. You **must** always _unwrap_ an optional before you can use it.
 
@@ -261,7 +279,7 @@ One last thing... the _nil-coalescing operator_. You can use it to provide a def
 
 See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOfLife` is `42`. When that function returns a value, it's assigned to `meaningOfLife`.
 
-## Arrays
+## <a name="arrays"></a> Arrays
 
 Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have _numerical_ index values. Arrays always contain elements of the same type.
 
@@ -283,7 +301,7 @@ You can iterate arrays, like this:
         print(name)
     }
 
-## Dictionaries
+## <a name="dictionaries"></a> Dictionaries
 
 Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:
 
@@ -306,7 +324,7 @@ You can also iterate a dictionary, like this:
         print("\(name) has \(points) points");
     }
 
-## Closures
+## <a name="closures"></a> Closures
 
 With _closures_ you can pass around blocks of code, like functions, as if they are variables. You use them, for instance, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.
 
@@ -332,9 +350,9 @@ Another use case for closures is multi-threading with Grand Central Dispatch. Li
 
 In the above example, the last argument of `asyncAfter(deadline:execute:)` is a closure. It uses the _trailing closure_ syntax. When a closure is the last argument of a function call, you can write it after the function call parentheses and omit the argument label.
 
-## Guard and Defer
+## <a name="guard-defer"></a> Guard and Defer
 
-### Guard
+### <a name="guard"></a> Guard
 
 The `guard` statement helps you to return functions early. It's a conditional, and when it isn't met you need to exit the function with `return`.
 
@@ -350,7 +368,7 @@ Like this:
 
 You can read that as: _"Guard that the User ID is greater than zero, or else, exit this function"_. Guard is especially powerful when you have multiple conditions that should return the function.
 
-### Defer
+### <a name="defer"></a> Defer
 
 With `defer` you can define a code block that's executed when your function returns. The `defer` statement is similar to `guard`, because it also helps with the flow of your code. 
 
@@ -381,7 +399,7 @@ The file isn't written to when two conditions aren't met. You have to close the 
 
 Thanks to `defer`, the file is always closed when the function returns.
 
-## Generics
+## <a name="generics"></a> Generics
 
 In Swift your variables are _strong typed_. When you set the type of animals your farm can contain to `Duck`, you can't change that later on. With _generics_ however, you can!
 
@@ -396,7 +414,7 @@ This is a _generic function_. It uses a _placeholder type_ called `T` instead of
 
 If you want to insert ducks, cows, birds and chickens in your farm, you can now do that with one function instead of 4.
 
-## Tuples
+## <a name="tuples"></a> Tuples
 
 With _tuples_ you get two (or more) variables for one. They help you structure your code better. Like this:
 
@@ -420,7 +438,7 @@ You can also name the elements of a tuple, like this:
     print(flight.heading) 
     // Output: North
 
-## Error Handling
+## <a name="error-handling"></a> Error Handling
 
 Errors in Swift can be thrown, and should be caught. You can define an error type like this:
 
@@ -450,7 +468,7 @@ When you _use_ a function that can throw errors, you have to wrap it in a `do-tr
 
 In the example above, the `processPayment(creditcard:)` function is marked with the `try` keyword. When an error occurs, the `catch` block is executed.
 
-## Resources
+## <a name="resources"></a> Resources
 
 No cheatsheet is complete without a list of resources with more information. Wanna see how deep the rabbit hole really goes?
 
