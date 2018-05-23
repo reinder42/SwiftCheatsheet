@@ -14,7 +14,7 @@ Although we'd love for you to print it out and hang it on your desk, please thin
 
 Want to help create the most comprehensive (and concise!) Swift cheatsheet ever? There's a few ways you can help:
 
-- Suggest code examples and topics by creating an Issue
+- Suggest code examples, topics and cheat sheet items by [creating an Issue](https://github.com/reinder42/SwiftCheatsheet/issues)
 - Add your own code examples by creating a Pull Request
 - Share this cheatsheet with iOS developers you know to spread the word
 

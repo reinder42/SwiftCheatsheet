@@ -3,6 +3,7 @@
 Please ensure your pull request follows these guidelines.
 
 - **Make individual pull requests for every code example or topic you want to add.**
+- Only make a pull request for complete code examples, topics or cheat sheet items. If you have an idea or suggestion, use [Issues](https://github.com/reinder42/SwiftCheatsheet/issues).
 - Search previous suggestions before adding a new one – it may be a duplicate.
 - Be mindful of formatting. It's best to start with a bit of text like "Variables are ...", then a code example, then some more text explaining the example, and then some further deeper examples.
 - New topics, improvements of existing code examples etc. are welcome. Remember, it's a cheatsheet, not the Swift reference guide.
