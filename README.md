@@ -20,5 +20,5 @@ Want to help create the most comprehensive (and concise!) Swift cheatsheet ever?
 
 For more information, please check the [contribution guidelines](https://github.com/reinder42/SwiftCheatsheet/blob/master/CONTRIBUTING.md).
 
-Distributed under the MIT license. See LICENSE for more information.
+Distributed under the MIT license. See [LICENSE](LICENSE) for more information.
 
