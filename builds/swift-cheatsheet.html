@@ -1,0 +1,569 @@
+<!DOCTYPE html>  
+<html lang="NL">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>swift-cheatsheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style id="mkstylesheet">
+#wrapper{color:#24292e;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';margin:0;text-size-adjust:100%}#wrapper aside,#wrapper article,#wrapper details,#wrapper figcaption,#wrapper figure,#wrapper footer,#wrapper header,#wrapper hgroup,#wrapper main,#wrapper menu,#wrapper nav,#wrapper section,#wrapper summary{display:block}#wrapper audio,#wrapper canvas,#wrapper progress,#wrapper video{display:inline-block;vertical-align:baseline}#wrapper audio:not([controls]){display:none;height:0}#wrapper [hidden],#wrapper template{display:none}#wrapper a{background-color:transparent}#wrapper a:active,#wrapper a:hover{outline:0}#wrapper abbr[title]{border-bottom:1px dotted}#wrapper b,#wrapper strong{font-weight:bold}#wrapper dfn{font-style:italic}#wrapper mark{background:#ff0;color:#000}#wrapper small{font-size:80%}#wrapper sub,#wrapper sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}#wrapper sup{top:-.5em}#wrapper sub{bottom:-.25em}#wrapper img{border:0}#wrapper svg:not(:root){overflow:hidden}#wrapper figure{margin:1em 40px}#wrapper hr{box-sizing:content-box;height:0}#wrapper pre{overflow:auto}#wrapper code,#wrapper kbd,#wrapper pre,#wrapper samp{font-family:monospace, monospace;font-size:1em}#wrapper button,#wrapper input,#wrapper optgroup,#wrapper select,#wrapper textarea{color:inherit;font:inherit;margin:0}#wrapper button{overflow:visible}#wrapper button,#wrapper select{text-transform:none}#wrapper button,#wrapper input[type='button'],#wrapper input[type='reset'],#wrapper input[type='submit']{-webkit-appearance:button;cursor:pointer}#wrapper button[disabled]{cursor:default}#wrapper button::-moz-focus-inner,#wrapper input::-moz-focus-inner{border:0;padding:0}#wrapper input{line-height:normal}#wrapper input[type='checkbox'],#wrapper input[type='radio']{box-sizing:border-box;padding:0}#wrapper input[type='number']::-webkit-inner-spin-button,#wrapper input[type='number']::-webkit-outer-spin-button{height:auto}#wrapper input[type='search']{-webkit-appearance:textfield;box-sizing:content-box}#wrapper input[type='search']::-webkit-search-cancel-button,#wrapper input[type='search']::-webkit-search-decoration{-webkit-appearance:none}#wrapper fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}#wrapper legend{border:0;padding:0}#wrapper textarea{overflow:auto}#wrapper optgroup{font-weight:bold}#wrapper table{border-collapse:collapse;border-spacing:0}#wrapper *{box-sizing:border-box}#wrapper input,#wrapper select,#wrapper textarea,#wrapper button{font:14px/21px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'}#wrapper body{font:14px/21px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#333;background-color:#fff}#wrapper a{color:#4078c0;text-decoration:none}#wrapper a:hover,#wrapper a:active{text-decoration:underline}#wrapper hr,#wrapper .rule{background:transparent;border:0;border-bottom:1px solid #ddd;height:0;margin:15px 0;overflow:hidden}#wrapper hr:before,#wrapper .rule:before{content:'';display:table}#wrapper hr:after,#wrapper .rule:after{clear:both;content:'';display:table}#wrapper h1,#wrapper h2,#wrapper h3,#wrapper h4,#wrapper h5,#wrapper h6{font-weight:600;line-height:1.1;margin:24px 0 16px;padding:0}#wrapper h1,#wrapper h2{border-bottom:1px solid #eaecef}#wrapper h1{font-size:32px;line-height:40px;margin:0 0 16px;padding:0 0 9.600000381469727px}#wrapper h2{font-size:24px;line-height:30px;padding:0 0 7.199999809265137px}#wrapper h3{font-size:20px;line-height:25px}#wrapper h4{font-size:16px;line-height:20px;margin:24px 0 16px;padding:0}#wrapper h5{font-size:14px;line-height:17px}#wrapper h6{font-size:13.600000381469727px;line-height:17px}#wrapper small{font-size:90%}#wrapper blockquote{margin:0}#wrapper ol ol,#wrapper ul ol{list-style-type:lower-roman}#wrapper ul ul ol,#wrapper ul ol ol,#wrapper ol ul ol,#wrapper ol ol ol{list-style-type:lower-alpha}#wrapper dd{margin-left:0}#wrapper tt,#wrapper code{font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;font-size:12px}#wrapper pre{font:12px Consolas, 'Liberation Mono', Menlo, Courier, monospace;margin-bottom:0;margin-top:0}#wrapper{-webkit-font-smoothing:antialiased;background:#fff;border:solid 1px #dddddd !important;border-radius:3px;color:#333;font:14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:1.6;padding:3px}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;font-size:16px;line-height:1.6;margin:15px;padding:30px}#wrapper>*:first-child{margin-top:0 !important}#wrapper>*:last-child{margin-bottom:0 !important}@media screen{#wrapper{border:solid 1px #ddd}}p,blockquote,ul,ol,dl,table,pre{margin-bottom:16px}hr{height:4px;padding:0;margin:16px 0;background-color:#e7e7e7;border:0 none}ul,ol{padding-left:2em}ul.no-list,ol.no-list{padding:0;list-style-type:none}ul ul,ul ol{margin-top:0;margin-bottom:0}ol ol,ol ul{margin-top:0;margin-bottom:0}li>p{margin-bottom:0}li p+p{margin-top:16px}dl{padding:0}dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}dl dd{padding:0 16px;margin-bottom:16px}blockquote{padding:0 15px;margin-left:0;color:#777;border-left:4px solid #ddd}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:0}table{display:block;width:100%;overflow:auto}table th{font-weight:700;padding:6px 13px;border:1px solid #ddd}table td{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(2n){background-color:#f8f8f8}img{max-width:100%;-moz-box-sizing:border-box;box-sizing:border-box}span.frame{display:block;overflow:hidden}span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}span.frame span img{display:block;float:left}span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}span.align-center{display:block;overflow:hidden;clear:both}span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}span.float-left span{margin:13px 0 0}span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}code,tt{background-color:rgba(0,0,0,0.04);border-radius:3px;font-size:85%;margin:0;padding-bottom:.2em;padding-top:.2em;padding:0}code::before,code::after{content:'\00a0';letter-spacing:-.2em}tt:before,tt:after{content:'\00a0';letter-spacing:-.2em}code br,tt br{display:none}del code{text-decoration:inherit;vertical-align:text-top}pre>code{padding:0;margin:0;font-size:100%;white-space:pre;background:transparent;border:0}.highlight{margin-bottom:16px}.highlight pre{padding:16px;margin-bottom:0;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}pre{padding:16px;margin-bottom:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px;word-wrap:normal}pre code,pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}pre code:before,pre code:after{content:normal}pre tt:before,pre tt:after{content:normal}.poetry pre{font-family:Georgia, Garamond, serif !important;font-style:italic;font-size:110% !important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia, Garamond, serif !important;word-break:break-all;word-break:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;white-space:pre-wrap}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:none !important;font-size:12px}pre code{overflow:visible}}@media screen{body.inverted{border-color:#555;box-shadow:none;color:#eee !important}.inverted #wrapper,.inverted hr,.inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{border-color:#555;box-shadow:none;color:#eee !important}.inverted td,.inverted th{background:#333}.inverted pre,.inverted code,.inverted tt{background:#eeeeee !important;color:#111}.inverted h2{border-color:#555555}.inverted hr{border-color:#777;border-width:1px !important}::selection{background:rgba(157,193,200,0.5)}h1::selection{background-color:rgba(45,156,208,0.3)}h2::selection{background-color:rgba(90,182,224,0.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,0.3)}code::selection{background-color:rgba(0,0,0,0.7);color:#eeeeee}code span::selection{background-color:rgba(0,0,0,0.7) !important;color:#eeeeee !important}a::selection{background-color:rgba(255,230,102,0.2)}.inverted a::selection{background-color:rgba(255,230,102,0.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,0.5)}.inverted{background:#0b2531;background:#252a2a}.inverted #wrapper{background:#252a2a}.inverted a{color:#acd1d5}}.highlight{background:#fff}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k,.highlight .o{font-weight:700}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:700}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:700;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#a00}.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr{font-weight:700}.highlight .kt{color:#458;font-weight:700}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .n{color:#333}.highlight .na{color:teal}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:700}.highlight .no{color:teal}.highlight .ni{color:purple}.highlight .ne,.highlight .nf{color:#900;font-weight:700}.highlight .nn{color:#555}.highlight .nt{color:navy}.highlight .nv{color:teal}.highlight .ow{font-weight:700}.highlight .w{color:#bbb}.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo{color:#099}.highlight .sb,.highlight .sc,.highlight .sd,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc,.highlight .vg,.highlight .vi{color:teal}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#EAF2F5}.type-csharp .highlight .k,.type-csharp .highlight .kt{color:blue}.type-csharp .highlight .nf{color:#000;font-weight:400}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s,.type-csharp .highlight .sc{color:#a31515}.type-csharp .highlight .k,.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2B91AF}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s,.type-csharp .highlight .sc{color:#A31515}body.dark #wrapper{background:transparent !important;box-shadow:none !important}
+#mkreplaced-toc{list-style-position:inside;padding:0;margin:0 0 0 1rem;list-style-type:none}#mkreplaced-toc li::before{content:''}#mkreplaced-toc li{font-size:1rem;line-height:1.25;font-weight:normal}#mkreplaced-toc li ul{font-size:1.3rem;font-weight:300;padding:.5rem 0;margin:0 0 0 1rem}#mkreplaced-toc li.missing{list-style-type:none !important}#mkreplaced-toc.max-1 ul,#mkreplaced-toc.max1 ul{display:none}#mkreplaced-toc.max-2 ul ul,#mkreplaced-toc.max2 ul ul{display:none}#mkreplaced-toc.max-3 ul ul ul,#mkreplaced-toc.max3 ul ul ul{display:none}#mkreplaced-toc.max-4 ul ul ul ul,#mkreplaced-toc.max4 ul ul ul ul{display:none}#mkreplaced-toc.max-5 ul ul ul ul ul,#mkreplaced-toc.max5 ul ul ul ul ul{display:none}.mk-rtl{direction:rtl;text-align:right}.mkprinting,.mkprinting #wrapper{height:auto;margin-bottom:0;padding-bottom:0}.hideProgress #generated-toc,.hideProgress #firstdiff,.hideProgress #toc-title,.hideProgress #mkdocumentprogress,.hideProgress #mkincludechart,.hideProgress #mkprogressbar1,.hideProgress #mkprogressbar2,.hideProgress b.bookmark,.hideProgress .mkscrollmeter,.hideProgress #alllinks,.hideProgress #criticnav,.hideProgress .popup,.hideProgress #progressindicator,.hideProgress #mkautoscroll,.mkprinting #generated-toc,.mkprinting #firstdiff,.mkprinting #toc-title,.mkprinting #mkdocumentprogress,.mkprinting #mkincludechart,.mkprinting #mkprogressbar1,.mkprinting #mkprogressbar2,.mkprinting b.bookmark,.mkprinting .mkscrollmeter,.mkprinting #alllinks,.mkprinting #criticnav,.mkprinting .popup,.mkprinting #progressindicator,.mkprinting #mkautoscroll{display:none !important}@media print{body{background:white;line-height:1.4}html,body,#wrapper{-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;-webkit-perspective:none !important;-webkit-text-size-adjust:none;border:0;box-sizing:border-box;float:none;margin:0;max-width:100%;padding:10px 0 0;width:auto}.critic #wrapper mark.crit{background-color:#fffd38 !important;text-decoration:none;color:#000}h1,h2,h3,h4,h5,h6{page-break-after:avoid}p,h2,h3{orphans:3;widows:3}section{page-break-before:avoid}pre>code{white-space:pre;word-break:break-word}#generated-toc,#firstdiff,#toc-title,#mkdocumentprogress,#mkincludechart,#mkprogressbar1,#mkprogressbar2,.mkscrollmeter,#alllinks,.popup{display:none !important}.suppressprintlinks a{border-bottom:none !important;color:inherit !important;cursor:default !important;text-decoration:none !important}.hrefafterlinktext #wrapper a:link:after,.hrefafterlinktext #wrapper a:visited:after{content:" (" attr(href) ") ";font-size:90%;opacity:.9}.nocodebreak pre{page-break-inside:avoid}img,table,figure{page-break-inside:avoid}.breakfootnotes .footnotes{page-break-before:always}.breakfootnotes .footnotes hr{display:none}#mktoctitle{display:block}#print-title{border-bottom:solid 1px #666;display:block}#wrapper pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc{display:block}.task-list .task-list-item{list-style-type:none !important}.task-list .gh-complete.task-list-item .task-list-item-checkbox:before{background:#838387;content:'\2713'}.task-list .task-list-item-checkbox{-webkit-appearance:none;position:relative}.task-list .task-list-item-checkbox:before{border:solid 1px #aaa;border-radius:2px;color:white;content:' ';display:block;font-weight:bold;height:1em;left:-20px;line-height:1;position:absolute;text-align:center;top:-.75em;width:1em}}
+#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc,#wrapper #generated-toc-clone ul,#wrapper #mkreplaced-toc ul{list-style-position:inside}#wrapper #generated-toc-clone li.missing,#wrapper #mkreplaced-toc li.missing{list-style-type: none!important}#wrapper #generated-toc-clone ul,#wrapper #mkreplaced-toc ul{list-style-type: upper-roman}#wrapper #generated-toc-clone>ul>li>ul,#wrapper #mkreplaced-toc>li>ul {list-style-type: decimal}#wrapper #generated-toc-clone>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul{list-style-type: decimal-leading-zero}#wrapper #generated-toc-clone>ul>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul{list-style-type: lower-greek}#wrapper #generated-toc-clone>ul>li>ul>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul{list-style-type: disc}#wrapper #generated-toc-clone>ul>li>ul>li>ul>li>ul>li>ul>li>ul,#wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul>li>ul{list-style-type: square}#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc{}
+</style>
+
+<style id="mkprintstyles">@media print{#wrapper #generated-toc-clone,#generated-toc{display:none!important}
+html,body,#wrapper{font-size:10pt!important}
+}
+</style>
+
+
+  <base href="/Users/reinderdevries/Dropbox/Interactionauts/Opdrachten/LearnAppMaking.com/Courses/Swift Cheatsheet GitHub">
+</head>
+<body class="normal">
+  <div id="wrapper">
+<h1>Swift 5 Cheatsheet</h1>
+
+<h2>Table Of Contents</h2>
+
+<ul>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#oop">Classes, Objects, Properties</a></li>
+<li><a href="#control-flow">Control Flow</a>
+
+<ul>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#loops">Loops</a></li>
+<li><a href="#switch">Switch</a></li>
+</ul></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#optionals">Optionals</a></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#dictionaries">Dictionaries</a></li>
+<li><a href="#closures">Closures</a></li>
+<li><a href="#guard-defer">Guard and Defer</a>
+
+<ul>
+<li><a href="#guard">Guard</a></li>
+<li><a href="#defer">Defer</a></li>
+</ul></li>
+<li><a href="#generics">Generics</a></li>
+<li><a href="#tuples">Tuples</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+
+<h2><a name="variables"></a>Variables</h2>
+
+<p>Use <code>var</code> for variables that can change (&#8220;mutable&#8221;) and <code>let</code> for constants that can&#8217;t change (&#8220;non-mutable&#8221;). Variable, constant – it&#8217;s in the name!</p>
+
+<p><em>Integers</em> are &#8220;whole&#8221; numbers, i.e. numbers without a fractional component.</p>
+
+<pre><code>var meaningOfLife: Int = 42
+</code></pre>
+
+<p><em>Floats</em> are decimal-point numbers, i.e. numbers with a fractional component. They&#8217;re single precision, with as little as 6 decimal digits.</p>
+
+<pre><code>var phi: Float = 1.618
+</code></pre>
+
+<p><em>Doubles</em> are floating point numbers with double precision, i.e. numbers with a fractional component. Doubles are preferred over floats.</p>
+
+<pre><code>let pi: Double = 3.14159265359
+</code></pre>
+
+<p>A <em>String</em> is a sequence of characters, like text.</p>
+
+<pre><code>var message: String = &quot;Hello World!&quot;
+</code></pre>
+
+<p>You use <em>Booleans</em> for logical operations. A boolean can be either <code>true</code> or <code>false</code>. We have George Boole (1815&#8211;1864) to thank for its name.</p>
+
+<pre><code>var isLoggedIn: Bool = false
+</code></pre>
+
+<p>You can assign the result of an expression to a variable, like this:</p>
+
+<pre><code>var result: Int = 1 + 2
+</code></pre>
+
+<p>An <em>expression</em> is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together that the Swift compiler can &#8220;evaluate&#8221;. Like this:</p>
+
+<pre><code>let a = 3  
+let b = 4  
+let c = a + b
+</code></pre>
+
+<p>Swift can determine the <em>type</em> (<code>Int</code>, <code>Double</code>, <code>String</code>, etc.) of a variable on its own. This is called <em>type inference</em>. In this example, the type of <code>foo</code> is inferred to be <code>String</code>.</p>
+
+<pre><code>var foo = &quot;bar&quot;
+</code></pre>
+
+<p><strong>Fun Fact:</strong> &#8220;Foobar&#8221; is a placeholder name that programmers use to denote variable names, functions, etc. when its exact name isn&#8217;t that important. For instance, when you show example code in a Swift cheatsheet. But&#8230; <em>foobar</em> is confusing, so let&#8217;s not use it in tutorials, courses and programming books!)</p>
+
+<p>Variables can be <em>optional</em>, which means it either contains a value or it&#8217;s <code>nil</code>. Optionals make coding Swift safer and more productive. Here&#8217;s an optional string:</p>
+
+<pre><code>var optionalMessage: String?
+</code></pre>
+
+<h2><a name="functions"></a> Functions</h2>
+
+<p><em>Functions</em> are containers of Swift code. They have input and output. You often use functions to create abstractions in your code, and to make your code reusable.</p>
+
+<p>Here&#8217;s an example of a function:</p>
+
+<pre><code>func greetUser(name: String, bySaying greeting:String = &quot;Hello&quot;) -&gt; String  
+{
+    return &quot;\(greeting), \(name)&quot;  
+}
+</code></pre>
+
+<p>This function has two <em>parameters</em> called <code>name</code> and <code>greeting</code>, both of type <code>String</code>. The second parameter <code>greeting</code> has an <em>argument label</em> <code>bySaying</code>. The return type of the function is <code>String</code>, and its code is written between those squiggly brackets.</p>
+
+<p>You call the function like this:</p>
+
+<pre><code>let message = greetUser(name: &quot;Reinder&quot;, bySaying: &quot;Good Morning&quot;) 
+</code></pre>
+
+<p>The cool thing about functions is that you code them once, and then call them thousands of times. It&#8217;s (almost) always better to be lazy than tired!</p>
+
+<p>See how the function gets two &#8220;input&#8221; arguments and one &#8220;output&#8221; value? See how the function uses the argument label in the previous example? See how the result of the function is assigned to <code>message</code>? Good.</p>
+
+<p>When using documentation, or in courses, you&#8217;ll often see a special function syntax. Like this: <code>greetUser(name:bySaying:)</code>. See how it leaves some stuff out? This makes it easier to talk about the function.</p>
+
+<h2><a name="oop"></a> Classes, Objects, Properties</h2>
+
+<p>Classes are basic building blocks for apps. They can contain functions, sometimes called <em>methods</em>, and variables, called <em>properties</em>.</p>
+
+<pre><code>class Office: Building, Constructable  
+{
+    var address: String = &quot;1 Infinite Loop&quot;  
+    var phone: String?
+
+    @IBOutlet weak var submitButton:UIButton?
+
+    lazy var articles:String = {  
+        return Database.getArticles()  
+    }()
+
+    override init()  
+    {
+        address = &quot;1 Probability Drive&quot;  
+    }
+
+    func startWorking(_ time:String, withWorkers workers:Int)  
+    {
+        print(&quot;Starting working at time \(time) with workers \(workers)&quot;)  
+    }
+}
+</code></pre>
+
+<p>The class definition starts with <code>class</code>, then the class name <code>Office</code>, then the <code>Building</code> class it <em>inherits</em> from, and then the <code>Constructable</code> <em>protocol</em> it conforms to. Inheritance, protocols, all that stuff, is part of <em>Object-Oriented Programming</em>.</p>
+
+<p>Properties are variables that belong to a class instance. This class has 4 of them: <code>address</code>, <code>phone</code>, the outlet <code>submitButton</code> and the lazy computed property <code>articles</code>. Properties can have a number of attributes, like <code>weak</code> and <code>@IBOutlet</code>.</p>
+
+<p>The function <code>init()</code> is <em>overridden</em> from the superclass <code>Building</code>. The class <code>Office</code> is a <em>subclass</em> of <code>Building</code>, so it inherits all functions and properties that <code>Building</code> has.</p>
+
+<h2><a name="control-flow"></a> Control Flow</h2>
+
+<h3><a name="conditionals"></a> Conditionals</h3>
+
+<p>This is an <code>if</code>-statement, or <em>conditional</em>. You use them to make decisions based on logic.</p>
+
+<pre><code>if isActive  
+{
+    print(&quot;This user is ACTIVE!&quot;)  
+} else {  
+    print(&quot;Inactive user...&quot;)  
+}
+</code></pre>
+
+<p>You can combine multiple conditionals with the if-elseif-else syntax, like this:</p>
+
+<pre><code>var user:String = &quot;Bob&quot;
+
+if user == &quot;Alice&quot; &amp;&amp; isActive  
+{
+    print(&quot;Alice is active!&quot;)  
+}
+else if user == &quot;Bob&quot; &amp;&amp; !isActive  
+{
+    print(&quot;Bob is lazy!&quot;)  
+}
+else  
+{
+    print(&quot;When all else fails. Alice is inactive, or Bob is active, or the user is neither Bob nor Alice.&quot;)  
+}
+</code></pre>
+
+<p><strong>Fun Fact:</strong> Like <em>foobar</em>, Alice and Bob are fictional characters that are used as placeholder names. They were invented in a 1978 paper about cryptography.</p>
+
+<p>See that <code>&amp;&amp;</code>? That&#8217;s the <em>Logical AND</em> operator. You use it to create logical expressions that can be evaluated to <code>true</code> or <code>false</code>. Like this:</p>
+
+<pre><code>if user == &quot;Deep Thought&quot; || meaningOfLife == 42  
+{
+    print(&quot;The user is Deep Thought, or the meaning of life is 42...&quot;)  
+} 
+</code></pre>
+
+<p>Conditionals can be challenging to comprehend. Like this:</p>
+
+<pre><code>if c &lt; a &amp;&amp; b + c == a  
+{
+    print(&quot;Will this ever happen?&quot;)  
+}
+</code></pre>
+
+<h3><a name="loops"></a> Loops</h3>
+
+<p>Loops repeat stuff. It&#8217;s that easy. Like this:</p>
+
+<pre><code>for i in 1...5 {  
+    print(i)  
+}
+</code></pre>
+
+<p>This prints <code>1</code> to <code>5</code>, including <code>5</code>! You can also use the <em>half-open range operator</em> <code>a..&lt;b</code> to loop from <code>a</code> to <code>b</code> <em>not including</em> <code>b</code>. Like this:</p>
+
+<pre><code>for i in 1..&lt;4 {  
+    print(i)  
+}
+// Output: 1 2 3
+</code></pre>
+
+<p>When you don&#8217;t know how many times a loop needs to run <em>exactly</em>, you can use a <code>while</code> loop. Like this:</p>
+
+<pre><code>while b &lt;= 60 &amp;&amp; b &gt; 0  
+{
+    print(b)  
+    b -= 1  
+}
+</code></pre>
+
+<h3><a name="switch"></a> Switch</h3>
+
+<p>A <code>switch</code> statement takes a value and compares it against one of several <em>cases</em>. It&#8217;s similar to the <code>if-else if-else</code> conditional, and it&#8217;s an elegant way of dealing with multiple states.</p>
+
+<p>An example:</p>
+
+<pre><code>let weather = ...
+
+switch weather  
+{
+    case .rain:  
+        print(&quot;Bring a raincoat!&quot;)  
+    case .clear, .sunny:  
+        print(&quot;Don't forget your sunglasses.&quot;)  
+    case .overcast:  
+        print(&quot;It's really depressing.&quot;)  
+    case .tsunami, .earthquake:  
+        print(&quot;OH NO! BIG WAVE!&quot;)  
+    default:  
+        print(&quot;Expect the best, prepare for the worst.&quot;)  
+}
+</code></pre>
+
+<p>In Swift, <code>switch</code> statements don&#8217;t have an implicit <em>fall-through</em>, but you can use <code>fallthrough</code> explicitly. Every case needs to have at least one line of code in it. </p>
+
+<p>The <code>switch</code> statement only executes one case. As such, you don&#8217;t have to use a <code>break</code> explicitly to end a case. You can use it to break out of a case, though. </p>
+
+<p>The <code>switch</code> cases need to be <em>exhaustive</em>, or you need to provide a <code>default</code> case. For instance, when you&#8217;re working with an <code>enum</code>, you&#8217;ll need to incorporate every value in the enumeration.</p>
+
+<p>You can also use Swift <em>ranges</em> to match interval for numbers, use tuples to match partial values, and use Swift&#8217;s <code>where</code> keyword to check for additional conditions.</p>
+
+<h2><a name="strings"></a> Strings</h2>
+
+<p>Strings are pretty cool. Here&#8217;s an example:</p>
+
+<pre><code>var jobTitle: String = &quot;iOS App Developer&quot;
+</code></pre>
+
+<p>Inside a string, you can use <em>string interpolation</em> to string together multiple strings. Like this:</p>
+
+<pre><code>var hello = &quot;Hello, \(jobTitle)&quot;  
+// Output: Hello, iOS App Developer
+</code></pre>
+
+<p>You can also turn an <code>Int</code> into a <code>String</code>:</p>
+
+<pre><code>let number = 42  
+let numberAsString = &quot;\(number)&quot;
+</code></pre>
+
+<p>And vice-versa:</p>
+
+<pre><code>let number = &quot;42&quot;  
+let numberAsInt = Int(number)
+</code></pre>
+
+<h2><a name="optionals"></a> Optionals</h2>
+
+<p><em>Optionals</em> can either be <code>nil</code> or contain a value. You <strong>must</strong> always <em>unwrap</em> an optional before you can use it.</p>
+
+<p>This is Bill. Bill is an optional.</p>
+
+<pre><code>var bill: String? = nil
+</code></pre>
+
+<p>You can unwrap <code>bill</code> in a number of ways. First, this is <em>optional binding</em>.</p>
+
+<pre><code>if let definiteBill = bill {  
+    print(definiteBill)  
+}
+</code></pre>
+
+<p>In this example, you bind the non-optional value from <code>bill</code> to <code>definiteBill</code> <em>but only when <code>bill</code> is not <code>nil</code></em>. It&#8217;s like asking: &#8220;Is it not <code>nil</code>?&#8221; OK, if not, then assign it to this constant and execute that stuff between the squiggly brackets.</p>
+
+<p>You can also use <em>force-unwrapping</em> to unwrap an optional. Like this:</p>
+
+<pre><code>var droid: String? = &quot;R2D2&quot;
+
+if droid != nil {  
+    print(&quot;This is not the droid you're looking for: \(droid!)&quot;)  
+}
+</code></pre>
+
+<p>See how that <code>droid</code> is force-unwrapped with the exclamation mark <code>!</code>? You should keep in mind that if <code>droid</code> is <code>nil</code> when you force-unwrap it, your app will crash.</p>
+
+<p>You can also use <em>optional chaining</em> to work your way through a number of optionals. This saves you from coding too much optional binding blocks. Like this:</p>
+
+<pre><code>view?.button?.title = &quot;BOOYAH!&quot;
+</code></pre>
+
+<p>In this code, <code>view</code>, <code>button</code> and <code>title</code> are all optionals. When <code>view</code> is <code>nil</code>, the code &#8220;stops&#8221; before <code>button</code>, so the <code>button</code> property is never accessed.</p>
+
+<p>One last thing&#8230; the <em>nil-coalescing operator</em>. You can use it to provide a default value when an expression results in <code>nil</code>. Like this:</p>
+
+<pre><code>var meaningOfLife = deepThought.think() ?? 42
+</code></pre>
+
+<p>See that <code>??</code>. When <code>deepThought.think()</code> returns <code>nil</code>, the variable <code>meaningOfLife</code> is <code>42</code>. When that function returns a value, it&#8217;s assigned to <code>meaningOfLife</code>.</p>
+
+<h2><a name="arrays"></a> Arrays</h2>
+
+<p>Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have <em>numerical</em> index values. Arrays always contain elements of the same type.</p>
+
+<pre><code>var hitchhikers = [&quot;Ford&quot;, &quot;Arthur&quot;, &quot;Zaphod&quot;, &quot;Trillian&quot;]
+</code></pre>
+
+<p>You can add items to the array:</p>
+
+<pre><code>hitchhikers += [&quot;Marvin&quot;]
+</code></pre>
+
+<p>You can get items from the array with <em>subscript syntax</em>:</p>
+
+<pre><code>let arthur = hitchhikers[1]
+</code></pre>
+
+<p>Remember that arrays are <em>zero-index</em>, so the index number of the first element is <code>0</code> (and not <code>1</code>).</p>
+
+<p>You can iterate arrays, like this:</p>
+
+<pre><code>for name in hitchhikers {  
+    print(name)  
+}
+</code></pre>
+
+<h2><a name="dictionaries"></a> Dictionaries</h2>
+
+<p>Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:</p>
+
+<pre><code>var score = [  
+    &quot;Fry&quot;: 10,  
+    &quot;Leela&quot;: 29,  
+    &quot;Bender&quot;: 1,  
+    &quot;Zoidberg&quot;: 0  
+]
+</code></pre>
+
+<p>What&#8217;s the type of this dictionary? It&#8217;s <code>[String: Int]</code>. Just like with arrays, you can use <em>subscript syntax</em> to get the value for a key:</p>
+
+<pre><code>print(score[&quot;Zoidberg&quot;])  
+// Output: 0
+</code></pre>
+
+<p>You can also iterate a dictionary, like this:</p>
+
+<pre><code>for (name, points) in score  
+{
+    print(&quot;\(name) has \(points) points&quot;);  
+}
+</code></pre>
+
+<h2><a name="closures"></a> Closures</h2>
+
+<p>With <em>closures</em> you can pass around blocks of code, like functions, as if they are variables. You use them, for instance, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.</p>
+
+<p>You define a closure like this:</p>
+
+<pre><code>let authenticate = { (name: String, userLevel: Int) -&gt; Bool in  
+    return (name == &quot;Bob&quot; || name == &quot;Alice&quot;) &amp;&amp; userLevel &gt; 3  
+}
+</code></pre>
+
+<p>You call the closure like this:</p>
+
+<pre><code>authenticate(&quot;Bob&quot;, 7)
+</code></pre>
+
+<p>If we had a user interface for authenticating a user, then we could pass the closure as a callback like this:</p>
+
+<pre><code>let loginVC = MyLoginViewController(withAuthCallback: authenticate)
+</code></pre>
+
+<p>Another use case for closures is multi-threading with Grand Central Dispatch. Like this:</p>
+
+<pre><code>DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(60)) {  
+    // Dodge this!  
+}
+</code></pre>
+
+<p>In the above example, the last argument of <code>asyncAfter(deadline:execute:)</code> is a closure. It uses the <em>trailing closure</em> syntax. When a closure is the last argument of a function call, you can write it after the function call parentheses and omit the argument label.</p>
+
+<h2><a name="guard-defer"></a> Guard and Defer</h2>
+
+<h3><a name="guard"></a> Guard</h3>
+
+<p>The <code>guard</code> statement helps you to return functions early. It&#8217;s a conditional, and when it isn&#8217;t met you need to exit the function with <code>return</code>.</p>
+
+<p>Like this:</p>
+
+<pre><code>func loadTweets(forUserID userID: Int) {  
+    guard userID &gt; 0 else {  
+        return  
+    }
+
+    // Load the tweets...  
+}
+</code></pre>
+
+<p>You can read that as: <em>&#8220;Guard that the User ID is greater than zero, or else, exit this function&#8221;</em>. Guard is especially powerful when you have multiple conditions that should return the function.</p>
+
+<h3><a name="defer"></a> Defer</h3>
+
+<p>With <code>defer</code> you can define a code block that&#8217;s executed when your function returns. The <code>defer</code> statement is similar to <code>guard</code>, because it also helps with the flow of your code. </p>
+
+<p>Like this:</p>
+
+<pre><code>func saveFile(withData data: Data) {
+
+    let filePointer = openFile(&quot;../example.txt&quot;)
+
+    defer {  
+        closeFile(filePointer)  
+    }
+
+    if filePointer.size &gt; 0 {  
+        return  
+    }
+
+    if data.size &gt; 512 {  
+        return  
+    }
+
+    writeFile(filePointer, withData: data)  
+}
+</code></pre>
+
+<p>In the example code you&#8217;re opening a file and writing some data to it. As a rule, you need to close the file pointer before exiting the function. </p>
+
+<p>The file isn&#8217;t written to when two conditions aren&#8217;t met. You have to close the file at those points. Without the <code>defer</code> statement, you would have written <code>closeFile(_:)</code> twice. </p>
+
+<p>Thanks to <code>defer</code>, the file is always closed when the function returns.</p>
+
+<h2><a name="generics"></a> Generics</h2>
+
+<p>In Swift your variables are <em>strong typed</em>. When you set the type of animals your farm can contain to <code>Duck</code>, you can&#8217;t change that later on. With <em>generics</em> however, you can!</p>
+
+<p>Like this:</p>
+
+<pre><code>func insertAnimal&lt;T&gt;(_ animal: T, inFarm farm: Farm)  
+{
+    // Insert `animal` in `farm`  
+}
+</code></pre>
+
+<p>This is a <em>generic function</em>. It uses a <em>placeholder type</em> called <code>T</code> instead of an actual type name, like <code>String</code>. </p>
+
+<p>If you want to insert ducks, cows, birds and chickens in your farm, you can now do that with one function instead of 4.</p>
+
+<h2><a name="tuples"></a> Tuples</h2>
+
+<p>With <em>tuples</em> you get two (or more) variables for one. They help you structure your code better. Like this:</p>
+
+<pre><code>let coffee = (&quot;Cappuccino&quot;, 3.99)
+</code></pre>
+
+<p>You can now get the price of the coffee like this:</p>
+
+<pre><code>let (name, price) = coffee  
+print(price)  
+// Output: 3.99
+</code></pre>
+
+<p>When you need just the name, you can do this:</p>
+
+<pre><code>let (name, _) = coffee  
+print(name)  
+// Output: Cappuccino
+</code></pre>
+
+<p>You can also name the elements of a tuple, like this:</p>
+
+<pre><code>let flight = (code: &quot;XJ601&quot;, heading: &quot;North&quot;, passengers: 216)  
+print(flight.heading)  
+// Output: North
+</code></pre>
+
+<h2><a name="error-handling"></a> Error Handling</h2>
+
+<p>Errors in Swift can be thrown, and should be caught. You can define an error type like this:</p>
+
+<pre><code>enum CreditCardError: Error {  
+    case insufficientFunds  
+    case issuerDeclined  
+    case invalidCVC  
+}
+</code></pre>
+
+<p>When you code a function that can throw errors, you have to mark its function definition with <code>throws</code>. Like this:</p>
+
+<pre><code>func processPayment(creditcard: String) throws {  
+    ...
+</code></pre>
+
+<p>Inside the function, you can then throw an error like this:</p>
+
+<pre><code>throw CreditCardError.insufficientFunds
+</code></pre>
+
+<p>When you <em>use</em> a function that can throw errors, you have to wrap it in a <code>do-try-catch</code> block. Like this:</p>
+
+<pre><code>do {  
+    try processPayment(creditcard: &quot;1234.1234&quot;)  
+}
+catch let error {  
+    print(error)  
+}
+</code></pre>
+
+<p>In the example above, the <code>processPayment(creditcard:)</code> function is marked with the <code>try</code> keyword. When an error occurs, the <code>catch</code> block is executed.</p>
+
+<h2><a name="resources"></a> Resources</h2>
+
+<p>No cheatsheet is complete without a list of resources with more information. Wanna see how deep the rabbit hole really goes?</p>
+
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html">Swift Language Guide</a></li>
+<li><a href="https://apple.github.io/swift-evolution/">Swift Evolution</a></li>
+<li><a href="https://developer.apple.com/documentation/swift">Swift Standard Library</a></li>
+<li><a href="https://developer.apple.com/documentation/">Apple Developer Documentation</a></li>
+<li><a href="https://github.com/vsouza/awesome-ios">https://github.com/vsouza/awesome-ios</a></li>
+<li><a href="https://github.com/matteocrippa/awesome-swift">https://github.com/matteocrippa/awesome-swift</a></li>
+<li><a href="http://online.swiftplayground.run/">http://online.swiftplayground.run/</a></li>
+</ul>
+<!-- ##END MARKED WRAPPER## -->
+    </div>
+</body>
+</html>

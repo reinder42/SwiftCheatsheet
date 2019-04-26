@@ -1,8 +1,8 @@
-# Swift Cheatsheet
+# Swift 5 Cheatsheet
 
-A cheatsheet for Swift 4. Including examples of common Swift code and explanations of what it does and how it works. Perfect for beginner iOS developers!
+A cheatsheet for Swift 5. Including examples of common Swift code and explanations of what it does and how it works. Perfect for beginner iOS developers!
 
-**[Go to the cheatsheet](https://github.com/reinder42/SwiftCheatsheet/blob/master/swift-4-cheatsheet.md)**
+**[Go to the cheatsheet](https://github.com/reinder42/SwiftCheatsheet/blob/master/swift-cheatsheet.md)**
 
 ## How to Use
 

@@ -1,4 +1,4 @@
-# Swift 4 Cheatsheet
+# Swift 5 Cheatsheet
 
 ## Table Of Contents
 
