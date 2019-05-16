@@ -24,13 +24,13 @@
 
 ## <a name="variables"></a>Variables
 
-Use `var` for variables that can change ("mutable") and `let` for constants that can't change ("non-mutable"). Variable, constant – it's in the name!
+Use `var` for variables that can change ("mutable") and `let` for constants that can't change ("non-mutable").
 
 _Integers_ are "whole" numbers, i.e. numbers without a fractional component.
 
     var meaningOfLife: Int = 42
 
-_Floats_ are decimal-point numbers, i.e. numbers with a fractional component. They're single precision, with as little as 6 decimal digits.
+_Floats_ are decimal-point numbers, i.e. numbers with a fractional component.
 
     var phi: Float = 1.618
 
@@ -42,7 +42,7 @@ A _String_ is a sequence of characters, like text.
 
     var message: String = "Hello World!"
 
-You use _Booleans_ for logical operations. A boolean can be either `true` or `false`. We have George Boole (1815-1864) to thank for its name.
+A _boolean_ can be either `true` or `false`. You use booleans for logical operations.
 
     var isLoggedIn: Bool = false
 
@@ -50,17 +50,15 @@ You can assign the result of an expression to a variable, like this:
 
     var result: Int = 1 + 2
 
-An _expression_ is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together that the Swift compiler can "evaluate". Like this:
+An _expression_ is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together. Like `a + b` in this example:
 
     let a = 3
     let b = 4
     let c = a + b
 
-Swift can determine the _type_ (`Int`, `Double`, `String`, etc.) of a variable on its own. This is called _type inference_. In this example, the type of `foo` is inferred to be `String`.
+Swift can determine the _type_ (`Int`, `Double`, `String`, etc.) of a variable on its own. This is called _type inference_. In this example, the type of `name` is inferred to be `String`.
 
-    var foo = "bar"
-
-**Fun Fact:** "Foobar" is a placeholder name that programmers use to denote variable names, functions, etc. when its exact name isn't that important. For instance, when you show example code in a Swift cheatsheet. But... _foobar_ is confusing, so let's not use it in tutorials, courses and programming books!)
+    var name = "Arthur Dent"
 
 Variables can be _optional_, which means it either contains a value or it's `nil`. Optionals make coding Swift safer and more productive. Here's an optional string:
 
@@ -79,15 +77,11 @@ Here's an example of a function:
 
 This function has two _parameters_ called `name` and `greeting`, both of type `String`. The second parameter `greeting` has an _argument label_ `bySaying`. The return type of the function is `String`, and its code is written between those squiggly brackets.
 
-You call the function like this:
+You call the function like the following. The function is called, with two arguments, and the return value of the function is assigned to `message`.
 
-    let message = greetUser(name: "Reinder", bySaying: "Good Morning") 
+    let message = greetUser(name: "Zaphod", bySaying: "Good Morning") 
 
-The cool thing about functions is that you code them once, and then call them thousands of times. It's (almost) always better to be lazy than tired!
-
-See how the function gets two "input" arguments and one "output" value? See how the function uses the argument label in the previous example? See how the result of the function is assigned to `message`? Good.
-
-When using documentation, or in courses, you'll often see a special function syntax. Like this: `greetUser(name:bySaying:)`. See how it leaves some stuff out? This makes it easier to talk about the function.
+Courses, books, documentation, etc. uses a special notation for function signatures. It'll use the function name and argument labels, like `greetUser(name:bySaying:)`, to describe the function.
 
 ## <a name="oop"></a> Classes, Objects, Properties
 
@@ -121,6 +115,11 @@ Properties are variables that belong to a class instance. This class has 4 of th
 
 The function `init()` is _overridden_ from the superclass `Building`. The class `Office` is a _subclass_ of `Building`, so it inherits all functions and properties that `Building` has.
 
+You can create an _instance_ of a class, and change its properties, like this:
+
+    let buildingA = Office()
+    buildingA.address = "Sector ZZ9 Plural Z Alpha"
+
 ## <a name="control-flow"></a> Control Flow
 
 ### <a name="conditionals"></a> Conditionals
@@ -134,7 +133,7 @@ This is an `if`-statement, or _conditional_. You use them to make decisions base
         print("Inactive user...")
     }
 
-You can combine multiple conditionals with the if-elseif-else syntax, like this:
+You can combine multiple conditionals with the `if-elseif-else` syntax, like this:
 
     var user:String = "Bob"
 
@@ -148,12 +147,10 @@ You can combine multiple conditionals with the if-elseif-else syntax, like this:
     }
     else
     {
-        print("When all else fails. Alice is inactive, or Bob is active, or the user is neither Bob nor Alice.")
+        print("When none of the above are true...")
     }
 
-**Fun Fact:** Like _foobar_, Alice and Bob are fictional characters that are used as placeholder names. They were invented in a 1978 paper about cryptography.
-
-See that `&&`? That's the _Logical AND_ operator. You use it to create logical expressions that can be evaluated to `true` or `false`. Like this:
+The `&&` is the _Logical AND_ operator. You use it to create logical expressions that can be evaluated to `true` or `false`. Like this:
 
     if user == "Deep Thought" || meaningOfLife == 42
     {
@@ -182,7 +179,7 @@ This prints `1` to `5`, including `5`! You can also use the _half-open range ope
     }
     // Output: 1 2 3
 
-When you don't know how many times a loop needs to run _exactly_, you can use a `while` loop. Like this:
+When you don't know how many times a loop needs to run _exactly_, you can use a `while` loop. A `while` loop keeps iterating as long as its expression is `true`.
 
     while b <= 60 && b > 0
     {
@@ -212,11 +209,9 @@ An example:
             print("Expect the best, prepare for the worst.")
     }
 
-In Swift, `switch` statements don't have an implicit _fall-through_, but you can use `fallthrough` explicitly. Every case needs to have at least one line of code in it. 
+In Swift, `switch` statements don't have an implicit _fall-through_, but you can use `fallthrough` explicitly. Every case needs to have at least one line of code in it. You don't have to use a `break` explicitly to end a case.
 
-The `switch` statement only executes one case. As such, you don't have to use a `break` explicitly to end a case. You can use it to break out of a case, though. 
-
-The `switch` cases need to be _exhaustive_, or you need to provide a `default` case. For instance, when you're working with an `enum`, you'll need to incorporate every value in the enumeration.
+The `switch` cases need to be _exhaustive_. For example, when working with an `enum`, you'll need to incorporate every value in the enumeration. You can also provide a `default` case, which is similar to `else` in a conditional.
 
 You can also use Swift _ranges_ to match interval for numbers, use tuples to match partial values, and use Swift's `where` keyword to check for additional conditions.
 
@@ -240,6 +235,23 @@ And vice-versa:
 
     let number = "42"
     let numberAsInt = Int(number)
+
+You can loop over the characters of a string like this:
+
+    let text = "Forty-two!"
+
+    for char in text {
+        print(char)
+    }
+
+You can get individual characters and character ranges by using _indices_, like this:
+
+    let text = "Forty-two!"
+    text[text.startIndex] // F
+    text[text.index(before: text.endIndex)] // !
+    text[text.index(text.startIndex, offsetBy: 3)] // t
+    text[..<text.index(text.startIndex, offsetBy: 3)] // For
+    text[text.index(text.endIndex, offsetBy: -4)...] // two!
 
 ## <a name="optionals"></a> Optionals
 
@@ -326,7 +338,7 @@ You can also iterate a dictionary, like this:
 
 ## <a name="closures"></a> Closures
 
-With _closures_ you can pass around blocks of code, like functions, as if they are variables. You use them, for instance, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.
+With _closures_ you can pass around blocks of code, like functions, as if they are variables. You use them, for example, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.
 
 You define a closure like this:
 
@@ -358,7 +370,8 @@ The `guard` statement helps you to return functions early. It's a conditional, a
 
 Like this:
 
-    func loadTweets(forUserID userID: Int) {
+    func loadTweets(forUserID userID: Int) 
+    {
         guard userID > 0 else {
             return
         }
@@ -367,6 +380,16 @@ Like this:
     }
 
 You can read that as: _"Guard that the User ID is greater than zero, or else, exit this function"_. Guard is especially powerful when you have multiple conditions that should return the function.
+
+Guard blocks always need to exit its enclosing scope, i.e. transfer control outside of the scope, by using `return`, `throw`, `break` or `continue`.
+
+You can also combine `guard` and `if let` (optional binding) into `guard let`. This checks if the given expression is not `nil`, and assigns it to a constant. When the expression is `nil`, the `else` clause of `guard` is executed.
+
+    guard let user = object?.user else {
+        return
+    }
+
+You can now use the `user` constant in the rest of the scope, below the `guard let` block.
 
 ### <a name="defer"></a> Defer
 
