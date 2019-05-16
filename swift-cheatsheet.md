@@ -4,6 +4,7 @@
 
 - [Variables](#variables)
 - [Functions](#functions)
+- [Operators](#operators)
 - [Classes, Objects, Properties](#oop)
 - [Control Flow](#control-flow)
     + [Conditionals](#conditionals)
@@ -82,6 +83,65 @@ You call the function like the following. The function is called, with two argum
     let message = greetUser(name: "Zaphod", bySaying: "Good Morning") 
 
 Courses, books, documentation, etc. uses a special notation for function signatures. It'll use the function name and argument labels, like `greetUser(name:bySaying:)`, to describe the function.
+
+## <a name="operators"></a> Operators
+
+The _assignment operator_ `=` assigns what's right of the operator to what's left of the operator. Don't confuse it with `==`!
+
+    let age = 42
+
+Swift has a few basic math operators:
+
+- `a + b` for _addition_ (works for strings too)
+- `a - b` for _subtraction_
+- `a * b` for _multiplication_
+- `a / b` for _division_
+- `a % b` for _remainder_ (or use `isMultiple(of:)`)
+- `-a` for _minus_ (invert sign)
+
+Unlike other programming languages, Swift does not have `--` and `++` operators. Instead it has:
+
+- `a += b` for _addition_, such as `n += 1` for `n++` or `n = n + 1`
+- `a -= b` for _subtraction_, such as `n -= 1` for `n--` or `n = n - 1`
+
+You can also use `+=` for arrays:
+
+    var rappers = ["Eminem", "Jay-Z", "Snoop Dogg"]
+    rappers += ["Tupac"]
+
+Swift has 6 comparison operators:
+
+- `a == b` for _equality_, i.e. "a is equal to b"
+- `a != b` for _inequality_, i.e. "a is not equal to b"
+- `a > b` for _greater than_, i.e. "a is greater than b"
+- `a < b` for _less than_, i.e. "a is less than b"
+- `a >= b` for _greater than or equal_
+- `a <= b` for _less than or equal_
+
+Swift also has the identity operators `===` and `!==`. You can use them to test if two variables reference the exact _same object_. Contrast this with `==` and `!=`, which merely test if two objects are equal to each other.
+
+You can also compare strings, which is helpful for sorting. Like this:
+
+    "abc" > "xyz"         // false
+    "Starbucks" > "Costa" // true
+    "Alice" < "Bob"       // true
+
+Swift has 3 logical operators:
+
+- `a && b` for _Logical AND_, returns `true` if `a` and `b` are `true`, or `false` otherwise
+- `a || b` for _Logical OR_, returns `true` if either `a` or `b` is `true`, or both are `true`, or `false` otherwise
+- `!a` for _Logical NOT_, returns `true` if `a` is `false`, and `false` if `a` is `true` (i.e., the opposite of `a`)
+
+Swift has a few range operators. You can use them to define ranges of numbers and strings.
+
+- `a...b`, the _closed range operator_, defines a range from `a` to `b` including `b`
+- `a..<b`, the _half-open range operator_, defines a range from `a` to `b` _not_ including `b`
+
+You can also use _one-sided ranges_. They're especially useful in arrays.
+
+- `a...` in `array[a...]` defines a range from `a` to the end of the array
+- `...a` in `array[...a]` defines a range from the beginning of the array to `a`
+- `..<a` in `array[..<a` defines a range from the beginning of the array to `a`, not including `a` itself
 
 ## <a name="oop"></a> Classes, Objects, Properties
 
@@ -162,6 +222,14 @@ Conditionals can be challenging to comprehend. Like this:
     if c < a && b + c == a
     {
         print("Will this ever happen?")
+    }
+
+Swift has a special operator, called the _ternary conditional operator_. It's coded as `a ? b : c`. If `a` is `true`, the expression returns `b`, and if `a` is `false`, the expression returns `c`. It's the equivalent of this:
+
+    if a {
+        b
+    } else {
+        c
     }
 
 ### <a name="loops"></a> Loops
