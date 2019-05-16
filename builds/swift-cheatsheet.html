@@ -17,8 +17,7 @@ html,body,#wrapper{font-size:10pt!important}
 </style>
 
 
-  <base href="/Users/reinderdevries/Dropbox/Interactionauts/Opdrachten/LearnAppMaking.com/Courses/Swift Cheatsheet GitHub">
-</head>
+  </head>
 <body class="normal">
   <div id="wrapper">
 <h1>Swift 5 Cheatsheet</h1>
@@ -28,6 +27,7 @@ html,body,#wrapper{font-size:10pt!important}
 <ul>
 <li><a href="#variables">Variables</a></li>
 <li><a href="#functions">Functions</a></li>
+<li><a href="#operators">Operators</a></li>
 <li><a href="#oop">Classes, Objects, Properties</a></li>
 <li><a href="#control-flow">Control Flow</a>
 
@@ -38,8 +38,13 @@ html,body,#wrapper{font-size:10pt!important}
 </ul></li>
 <li><a href="#strings">Strings</a></li>
 <li><a href="#optionals">Optionals</a></li>
+<li><a href="#collections">Collections</a>
+
+<ul>
 <li><a href="#arrays">Arrays</a></li>
 <li><a href="#dictionaries">Dictionaries</a></li>
+<li><a href="#sets">Sets</a></li>
+</ul></li>
 <li><a href="#closures">Closures</a></li>
 <li><a href="#guard-defer">Guard and Defer</a>
 
@@ -49,20 +54,21 @@ html,body,#wrapper{font-size:10pt!important}
 </ul></li>
 <li><a href="#generics">Generics</a></li>
 <li><a href="#tuples">Tuples</a></li>
+<li><a href="#enums">Enumerations</a></li>
 <li><a href="#error-handling">Error Handling</a></li>
 <li><a href="#resources">Resources</a></li>
 </ul>
 
 <h2><a name="variables"></a>Variables</h2>
 
-<p>Use <code>var</code> for variables that can change (&#8220;mutable&#8221;) and <code>let</code> for constants that can&#8217;t change (&#8220;non-mutable&#8221;). Variable, constant – it&#8217;s in the name!</p>
+<p>Use <code>var</code> for variables that can change (&#8220;mutable&#8221;) and <code>let</code> for constants that can&#8217;t change (&#8220;non-mutable&#8221;).</p>
 
 <p><em>Integers</em> are &#8220;whole&#8221; numbers, i.e. numbers without a fractional component.</p>
 
 <pre><code>var meaningOfLife: Int = 42
 </code></pre>
 
-<p><em>Floats</em> are decimal-point numbers, i.e. numbers with a fractional component. They&#8217;re single precision, with as little as 6 decimal digits.</p>
+<p><em>Floats</em> are decimal-point numbers, i.e. numbers with a fractional component.</p>
 
 <pre><code>var phi: Float = 1.618
 </code></pre>
@@ -77,7 +83,7 @@ html,body,#wrapper{font-size:10pt!important}
 <pre><code>var message: String = &quot;Hello World!&quot;
 </code></pre>
 
-<p>You use <em>Booleans</em> for logical operations. A boolean can be either <code>true</code> or <code>false</code>. We have George Boole (1815&#8211;1864) to thank for its name.</p>
+<p>A <em>boolean</em> can be either <code>true</code> or <code>false</code>. You use booleans for logical operations.</p>
 
 <pre><code>var isLoggedIn: Bool = false
 </code></pre>
@@ -87,19 +93,17 @@ html,body,#wrapper{font-size:10pt!important}
 <pre><code>var result: Int = 1 + 2
 </code></pre>
 
-<p>An <em>expression</em> is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together that the Swift compiler can &#8220;evaluate&#8221;. Like this:</p>
+<p>An <em>expression</em> is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together. Like <code>a + b</code> in this example:</p>
 
 <pre><code>let a = 3  
 let b = 4  
 let c = a + b
 </code></pre>
 
-<p>Swift can determine the <em>type</em> (<code>Int</code>, <code>Double</code>, <code>String</code>, etc.) of a variable on its own. This is called <em>type inference</em>. In this example, the type of <code>foo</code> is inferred to be <code>String</code>.</p>
+<p>Swift can determine the <em>type</em> (<code>Int</code>, <code>Double</code>, <code>String</code>, etc.) of a variable on its own. This is called <em>type inference</em>. In this example, the type of <code>name</code> is inferred to be <code>String</code>.</p>
 
-<pre><code>var foo = &quot;bar&quot;
+<pre><code>var name = &quot;Arthur Dent&quot;
 </code></pre>
-
-<p><strong>Fun Fact:</strong> &#8220;Foobar&#8221; is a placeholder name that programmers use to denote variable names, functions, etc. when its exact name isn&#8217;t that important. For instance, when you show example code in a Swift cheatsheet. But&#8230; <em>foobar</em> is confusing, so let&#8217;s not use it in tutorials, courses and programming books!)</p>
 
 <p>Variables can be <em>optional</em>, which means it either contains a value or it&#8217;s <code>nil</code>. Optionals make coding Swift safer and more productive. Here&#8217;s an optional string:</p>
 
@@ -120,16 +124,86 @@ let c = a + b
 
 <p>This function has two <em>parameters</em> called <code>name</code> and <code>greeting</code>, both of type <code>String</code>. The second parameter <code>greeting</code> has an <em>argument label</em> <code>bySaying</code>. The return type of the function is <code>String</code>, and its code is written between those squiggly brackets.</p>
 
-<p>You call the function like this:</p>
+<p>You call the function like the following. The function is called, with two arguments, and the return value of the function is assigned to <code>message</code>.</p>
 
-<pre><code>let message = greetUser(name: &quot;Reinder&quot;, bySaying: &quot;Good Morning&quot;) 
+<pre><code>let message = greetUser(name: &quot;Zaphod&quot;, bySaying: &quot;Good Morning&quot;) 
 </code></pre>
 
-<p>The cool thing about functions is that you code them once, and then call them thousands of times. It&#8217;s (almost) always better to be lazy than tired!</p>
+<p>Courses, books, documentation, etc. uses a special notation for function signatures. It&#8217;ll use the function name and argument labels, like <code>greetUser(name:bySaying:)</code>, to describe the function.</p>
 
-<p>See how the function gets two &#8220;input&#8221; arguments and one &#8220;output&#8221; value? See how the function uses the argument label in the previous example? See how the result of the function is assigned to <code>message</code>? Good.</p>
+<h2><a name="operators"></a> Operators</h2>
 
-<p>When using documentation, or in courses, you&#8217;ll often see a special function syntax. Like this: <code>greetUser(name:bySaying:)</code>. See how it leaves some stuff out? This makes it easier to talk about the function.</p>
+<p>The <em>assignment operator</em> <code>=</code> assigns what&#8217;s right of the operator to what&#8217;s left of the operator. Don&#8217;t confuse it with <code>==</code>!</p>
+
+<pre><code>let age = 42
+</code></pre>
+
+<p>Swift has a few basic math operators:</p>
+
+<ul>
+<li><code>a + b</code> for <em>addition</em> (works for strings too)</li>
+<li><code>a - b</code> for <em>subtraction</em></li>
+<li><code>a * b</code> for <em>multiplication</em></li>
+<li><code>a / b</code> for <em>division</em></li>
+<li><code>a % b</code> for <em>remainder</em> (or use <code>isMultiple(of:)</code>)</li>
+<li><code>-a</code> for <em>minus</em> (invert sign)</li>
+</ul>
+
+<p>Unlike other programming languages, Swift does not have <code>--</code> and <code>++</code> operators. Instead it has:</p>
+
+<ul>
+<li><code>a += b</code> for <em>addition</em>, such as <code>n += 1</code> for <code>n++</code> or <code>n = n + 1</code></li>
+<li><code>a -= b</code> for <em>subtraction</em>, such as <code>n -= 1</code> for <code>n--</code> or <code>n = n - 1</code></li>
+</ul>
+
+<p>You can also use <code>+=</code> for arrays:</p>
+
+<pre><code>var rappers = [&quot;Eminem&quot;, &quot;Jay-Z&quot;, &quot;Snoop Dogg&quot;]  
+rappers += [&quot;Tupac&quot;]
+</code></pre>
+
+<p>Swift has 6 comparison operators:</p>
+
+<ul>
+<li><code>a == b</code> for <em>equality</em>, i.e. &#8220;a is equal to b&#8221;</li>
+<li><code>a != b</code> for <em>inequality</em>, i.e. &#8220;a is not equal to b&#8221;</li>
+<li><code>a &gt; b</code> for <em>greater than</em>, i.e. &#8220;a is greater than b&#8221;</li>
+<li><code>a &lt; b</code> for <em>less than</em>, i.e. &#8220;a is less than b&#8221;</li>
+<li><code>a &gt;= b</code> for <em>greater than or equal</em></li>
+<li><code>a &lt;= b</code> for <em>less than or equal</em></li>
+</ul>
+
+<p>Swift also has the identity operators <code>===</code> and <code>!==</code>. You can use them to test if two variables reference the exact <em>same object</em>. Contrast this with <code>==</code> and <code>!=</code>, which merely test if two objects are equal to each other.</p>
+
+<p>You can also compare strings, which is helpful for sorting. Like this:</p>
+
+<pre><code>&quot;abc&quot; &gt; &quot;xyz&quot;         // false  
+&quot;Starbucks&quot; &gt; &quot;Costa&quot; // true  
+&quot;Alice&quot; &lt; &quot;Bob&quot;       // true
+</code></pre>
+
+<p>Swift has 3 logical operators:</p>
+
+<ul>
+<li><code>a &amp;&amp; b</code> for <em>Logical AND</em>, returns <code>true</code> if <code>a</code> and <code>b</code> are <code>true</code>, or <code>false</code> otherwise</li>
+<li><code>a || b</code> for <em>Logical OR</em>, returns <code>true</code> if either <code>a</code> or <code>b</code> is <code>true</code>, or both are <code>true</code>, or <code>false</code> otherwise</li>
+<li><code>!a</code> for <em>Logical NOT</em>, returns <code>true</code> if <code>a</code> is <code>false</code>, and <code>false</code> if <code>a</code> is <code>true</code> (i.e., the opposite of <code>a</code>)</li>
+</ul>
+
+<p>Swift has a few range operators. You can use them to define ranges of numbers and strings.</p>
+
+<ul>
+<li><code>a...b</code>, the <em>closed range operator</em>, defines a range from <code>a</code> to <code>b</code> including <code>b</code></li>
+<li><code>a..&lt;b</code>, the <em>half-open range operator</em>, defines a range from <code>a</code> to <code>b</code> <em>not</em> including <code>b</code></li>
+</ul>
+
+<p>You can also use <em>one-sided ranges</em>. They&#8217;re especially useful in arrays.</p>
+
+<ul>
+<li><code>a...</code> in <code>array[a...]</code> defines a range from <code>a</code> to the end of the array</li>
+<li><code>...a</code> in <code>array[...a]</code> defines a range from the beginning of the array to <code>a</code></li>
+<li><code>..&lt;a</code> in <code>array[..&lt;a</code> defines a range from the beginning of the array to <code>a</code>, not including <code>a</code> itself</li>
+</ul>
 
 <h2><a name="oop"></a> Classes, Objects, Properties</h2>
 
@@ -164,6 +238,22 @@ let c = a + b
 
 <p>The function <code>init()</code> is <em>overridden</em> from the superclass <code>Building</code>. The class <code>Office</code> is a <em>subclass</em> of <code>Building</code>, so it inherits all functions and properties that <code>Building</code> has.</p>
 
+<p>You can create an <em>instance</em> of a class, and change its properties, like this:</p>
+
+<pre><code>let buildingA = Office()  
+buildingA.address = &quot;Sector ZZ9 Plural Z Alpha&quot;
+</code></pre>
+
+<p>Extensions let you add new functions to existing types. This is useful in scenarios where you can&#8217;t change the code of a class. Like this:</p>
+
+<pre><code>extension Building  
+{
+    func evacuate() {  
+        print(&quot;Please leave the building in an orderly fashion.&quot;)  
+    }
+}
+</code></pre>
+
 <h2><a name="control-flow"></a> Control Flow</h2>
 
 <h3><a name="conditionals"></a> Conditionals</h3>
@@ -178,7 +268,7 @@ let c = a + b
 }
 </code></pre>
 
-<p>You can combine multiple conditionals with the if-elseif-else syntax, like this:</p>
+<p>You can combine multiple conditionals with the <code>if-elseif-else</code> syntax, like this:</p>
 
 <pre><code>var user:String = &quot;Bob&quot;
 
@@ -192,13 +282,11 @@ else if user == &quot;Bob&quot; &amp;&amp; !isActive
 }
 else  
 {
-    print(&quot;When all else fails. Alice is inactive, or Bob is active, or the user is neither Bob nor Alice.&quot;)  
+    print(&quot;When none of the above are true...&quot;)  
 }
 </code></pre>
 
-<p><strong>Fun Fact:</strong> Like <em>foobar</em>, Alice and Bob are fictional characters that are used as placeholder names. They were invented in a 1978 paper about cryptography.</p>
-
-<p>See that <code>&amp;&amp;</code>? That&#8217;s the <em>Logical AND</em> operator. You use it to create logical expressions that can be evaluated to <code>true</code> or <code>false</code>. Like this:</p>
+<p>The <code>&amp;&amp;</code> is the <em>Logical AND</em> operator. You use it to create logical expressions that can be evaluated to <code>true</code> or <code>false</code>. Like this:</p>
 
 <pre><code>if user == &quot;Deep Thought&quot; || meaningOfLife == 42  
 {
@@ -211,6 +299,15 @@ else
 <pre><code>if c &lt; a &amp;&amp; b + c == a  
 {
     print(&quot;Will this ever happen?&quot;)  
+}
+</code></pre>
+
+<p>Swift has a special operator, called the <em>ternary conditional operator</em>. It&#8217;s coded as <code>a ? b : c</code>. If <code>a</code> is <code>true</code>, the expression returns <code>b</code>, and if <code>a</code> is <code>false</code>, the expression returns <code>c</code>. It&#8217;s the equivalent of this:</p>
+
+<pre><code>if a {  
+    b
+} else {  
+    c
 }
 </code></pre>
 
@@ -231,7 +328,7 @@ else
 // Output: 1 2 3
 </code></pre>
 
-<p>When you don&#8217;t know how many times a loop needs to run <em>exactly</em>, you can use a <code>while</code> loop. Like this:</p>
+<p>When you don&#8217;t know how many times a loop needs to run <em>exactly</em>, you can use a <code>while</code> loop. A <code>while</code> loop keeps iterating as long as its expression is <code>true</code>.</p>
 
 <pre><code>while b &lt;= 60 &amp;&amp; b &gt; 0  
 {
@@ -263,11 +360,9 @@ switch weather
 }
 </code></pre>
 
-<p>In Swift, <code>switch</code> statements don&#8217;t have an implicit <em>fall-through</em>, but you can use <code>fallthrough</code> explicitly. Every case needs to have at least one line of code in it. </p>
+<p>In Swift, <code>switch</code> statements don&#8217;t have an implicit <em>fall-through</em>, but you can use <code>fallthrough</code> explicitly. Every case needs to have at least one line of code in it. You don&#8217;t have to use a <code>break</code> explicitly to end a case.</p>
 
-<p>The <code>switch</code> statement only executes one case. As such, you don&#8217;t have to use a <code>break</code> explicitly to end a case. You can use it to break out of a case, though. </p>
-
-<p>The <code>switch</code> cases need to be <em>exhaustive</em>, or you need to provide a <code>default</code> case. For instance, when you&#8217;re working with an <code>enum</code>, you&#8217;ll need to incorporate every value in the enumeration.</p>
+<p>The <code>switch</code> cases need to be <em>exhaustive</em>. For example, when working with an <code>enum</code>, you&#8217;ll need to incorporate every value in the enumeration. You can also provide a <code>default</code> case, which is similar to <code>else</code> in a conditional.</p>
 
 <p>You can also use Swift <em>ranges</em> to match interval for numbers, use tuples to match partial values, and use Swift&#8217;s <code>where</code> keyword to check for additional conditions.</p>
 
@@ -294,6 +389,25 @@ let numberAsString = &quot;\(number)&quot;
 
 <pre><code>let number = &quot;42&quot;  
 let numberAsInt = Int(number)
+</code></pre>
+
+<p>You can loop over the characters of a string like this:</p>
+
+<pre><code>let text = &quot;Forty-two!&quot;
+
+for char in text {  
+    print(char)  
+}
+</code></pre>
+
+<p>You can get individual characters and character ranges by using <em>indices</em>, like this:</p>
+
+<pre><code>let text = &quot;Forty-two!&quot;  
+text[text.startIndex] // F  
+text[text.index(before: text.endIndex)] // !  
+text[text.index(text.startIndex, offsetBy: 3)] // t  
+text[..&lt;text.index(text.startIndex, offsetBy: 3)] // For  
+text[text.index(text.endIndex, offsetBy: -4)...] // two!
 </code></pre>
 
 <h2><a name="optionals"></a> Optionals</h2>
@@ -339,7 +453,9 @@ if droid != nil {
 
 <p>See that <code>??</code>. When <code>deepThought.think()</code> returns <code>nil</code>, the variable <code>meaningOfLife</code> is <code>42</code>. When that function returns a value, it&#8217;s assigned to <code>meaningOfLife</code>.</p>
 
-<h2><a name="arrays"></a> Arrays</h2>
+<h2><a name="collections"></a> Collections</h2>
+
+<h3><a name="arrays"></a> Arrays</h3>
 
 <p>Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have <em>numerical</em> index values. Arrays always contain elements of the same type.</p>
 
@@ -365,7 +481,14 @@ if droid != nil {
 }
 </code></pre>
 
-<h2><a name="dictionaries"></a> Dictionaries</h2>
+<p>A helpful function on arrays is <code>enumerated()</code>. It lets you iterate index-value pairs, like this:</p>
+
+<pre><code>for (index, name) in hitchhikers.enumerated() {  
+    print(&quot;\(index) = \(name)&quot;)  
+}
+</code></pre>
+
+<h3><a name="dictionaries"></a> Dictionaries</h3>
 
 <p>Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:</p>
 
@@ -379,8 +502,23 @@ if droid != nil {
 
 <p>What&#8217;s the type of this dictionary? It&#8217;s <code>[String: Int]</code>. Just like with arrays, you can use <em>subscript syntax</em> to get the value for a key:</p>
 
-<pre><code>print(score[&quot;Zoidberg&quot;])  
-// Output: 0
+<pre><code>print(score[&quot;Leela&quot;])  
+// Output: 29
+</code></pre>
+
+<p>You can add a key-value pair to a dictionary like this:</p>
+
+<pre><code>score[&quot;Amy&quot;] = 9001
+</code></pre>
+
+<p>Change it like this:</p>
+
+<pre><code>score[&quot;Bender&quot;] = -1
+</code></pre>
+
+<p>And remove it like this:</p>
+
+<pre><code>score.removeValue(forKey: &quot;Zoidberg&quot;)
 </code></pre>
 
 <p>You can also iterate a dictionary, like this:</p>
@@ -391,9 +529,77 @@ if droid != nil {
 }
 </code></pre>
 
+<h3><a name="sets"></a> Sets</h3>
+
+<p><em>Sets</em> in Swift are similar to arrays and dictionaries. Just like arrays and dictionaries, the <code>Set</code> type is used to store multiple items of the same type in one collection.</p>
+
+<p>Here&#8217;s an example:</p>
+
+<pre><code>var fruit:Set = [&quot;apple&quot;, &quot;banana&quot;, &quot;strawberry&quot;, &quot;jackfruit&quot;]
+</code></pre>
+
+<p>You can add and remove items like this:</p>
+
+<pre><code>fruit.insert(&quot;pineapple&quot;)  
+fruit.remove(&quot;banana&quot;)
+</code></pre>
+
+<p>Sets are different from arrays and dictionaries, in these ways:</p>
+
+<ul>
+<li>Sets don&#8217;t have an order – they&#8217;re literally unsorted</li>
+<li>Every item in a set needs to be unique</li>
+<li>Sets don&#8217;t have indices or keys</li>
+<li>Instead, a set&#8217;s values need to be <em>hashable</em></li>
+<li>Because set items are hashable, you can search sets in <em>O(1)</em> time</li>
+</ul>
+
+<p>Here&#8217;s how you can quickly search a set:</p>
+
+<pre><code>let movies:Set = [&quot;Rocky&quot;, &quot;The Matrix&quot;, &quot;Lord of the Rings&quot;]
+
+if movies.contains(&quot;Rocky&quot;) {  
+    print(&quot;Rocky is one of your favorite movies!&quot;)  
+}
+</code></pre>
+
+<p>Sets are particularly useful for membership operations, to find out if sets have items in common for example. We can make a union of sets, subtract sets, intersect them, and find their differences.</p>
+
+<p>Consider the following Italian coffees and their ingredients:</p>
+
+<pre><code>let cappuccino:Set = [&quot;espresso&quot;, &quot;milk&quot;, &quot;milk foam&quot;]  
+let americano:Set  = [&quot;espresso&quot;, &quot;water&quot;]  
+let machiato:Set   = [&quot;espresso&quot;, &quot;milk foam&quot;]  
+let latte:Set      = [&quot;espresso&quot;, &quot;milk&quot;]
+</code></pre>
+
+<p>Can we find the <strong>union</strong> (add items) of two coffees?</p>
+
+<pre><code>machiato.union(latte)  
+// [&quot;espresso&quot;, &quot;milk foam&quot;, &quot;milk&quot;]
+</code></pre>
+
+<p>Can we <strong>subtract</strong> one coffee from another?</p>
+
+<pre><code>cappuccino.subtracting(americano)  
+// [&quot;milk foam&quot;, &quot;milk&quot;]
+</code></pre>
+
+<p>Can we find the <strong>intersection</strong> (shared items) of two coffees?</p>
+
+<pre><code>latte.intersection(cappuccino)  
+[&quot;espresso&quot;, &quot;milk&quot;]
+</code></pre>
+
+<p>Can we find the <strong>difference</strong> between two coffees?</p>
+
+<pre><code>latte.symmetricDifference(americano)  
+[&quot;milk&quot;, &quot;water&quot;]
+</code></pre>
+
 <h2><a name="closures"></a> Closures</h2>
 
-<p>With <em>closures</em> you can pass around blocks of code, like functions, as if they are variables. You use them, for instance, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.</p>
+<p>With <em>closures</em> you can pass around blocks of code, like functions, as if they are variables. You use them, for example, by passing a callback to a lengthy task. When the task ends, the callback – a closure – is executed.</p>
 
 <p>You define a closure like this:</p>
 
@@ -429,7 +635,8 @@ if droid != nil {
 
 <p>Like this:</p>
 
-<pre><code>func loadTweets(forUserID userID: Int) {  
+<pre><code>func loadTweets(forUserID userID: Int)  
+{
     guard userID &gt; 0 else {  
         return  
     }
@@ -439,6 +646,17 @@ if droid != nil {
 </code></pre>
 
 <p>You can read that as: <em>&#8220;Guard that the User ID is greater than zero, or else, exit this function&#8221;</em>. Guard is especially powerful when you have multiple conditions that should return the function.</p>
+
+<p>Guard blocks always need to exit its enclosing scope, i.e. transfer control outside of the scope, by using <code>return</code>, <code>throw</code>, <code>break</code> or <code>continue</code>.</p>
+
+<p>You can also combine <code>guard</code> and <code>if let</code> (optional binding) into <code>guard let</code>. This checks if the given expression is not <code>nil</code>, and assigns it to a constant. When the expression is <code>nil</code>, the <code>else</code> clause of <code>guard</code> is executed.</p>
+
+<pre><code>guard let user = object?.user else {  
+    return  
+}
+</code></pre>
+
+<p>You can now use the <code>user</code> constant in the rest of the scope, below the <code>guard let</code> block.</p>
 
 <h3><a name="defer"></a> Defer</h3>
 
@@ -515,6 +733,90 @@ print(name)
 print(flight.heading)  
 // Output: North
 </code></pre>
+
+<h2><a name="enums"></a> Enumerations</h2>
+
+<p>With enumerations, also known as enums, you can organize groups of values that are related. Here&#8217;s an example:</p>
+
+<pre><code>enum Compass {  
+    case north  
+    case east  
+    case south  
+    case west  
+}
+</code></pre>
+
+<p>Here&#8217;s how you use them:</p>
+
+<pre><code>let direction: Compass = .south
+</code></pre>
+
+<p>Enums and the <code>switch</code> statement are a powerful couple. Here&#8217;s an example:</p>
+
+<pre><code>enum Emotion {  
+    case happy, sad, angry, scared, surprised  
+}
+
+switch robot.mood {  
+case .angry:  
+    robot.destroyAllHumans()  
+case .sad:  
+    robot.cry()  
+case .happy:  
+    robot.play(&quot;happy.mp3&quot;)  
+case default:  
+    print(&quot;Error: emotion not supported.&quot;)  
+}
+</code></pre>
+
+<p>You can also assign raw values to enums, by using existing Swift types like <code>String</code>. Here&#8217;s an example:</p>
+
+<pre><code>enum Flavor:String {  
+    case vanilla = &quot;vanilla&quot;  
+    case strawberry = &quot;strawberry&quot;  
+    case chocolate = &quot;chocolate&quot;  
+}
+</code></pre>
+
+<p>With this approach, you can get the string value for an enum like this:</p>
+
+<pre><code>let icecream = Flavor.vanilla  
+print(icecream.rawValue)  
+// Output: vanilla
+</code></pre>
+
+<p>You can now also use a string to create an enum, like this:</p>
+
+<pre><code>let icecream = Flavor(rawValue: &quot;vanilla&quot;)  
+print(icecream)  
+// Output: Optional(Flavor.vanilla)
+</code></pre>
+
+<p>You can also associate values with individual cases of an enumeration, like this:</p>
+
+<pre><code>enum Item {  
+    case weapon(Int, Int)  
+    case food(Int)  
+    case armor(Int, Int, Double)  
+}
+</code></pre>
+
+<p>You can now use the enumeration&#8217;s associated values, like this:</p>
+
+<pre><code>func use(item: Item)  
+{
+    switch item {  
+    case .weapon(let hitPoints, _):  
+        player.attack(hitPoints)  
+    case .food(let health):  
+        player.health += health  
+    case .armor(let damageThreshold, let weight, let condition):  
+        player.damageThreshold = Double(damageThreshold) * condition  
+    }
+}
+</code></pre>
+
+<p>In the above code, we&#8217;re using <code>hitPoints</code> to &#8220;attack&#8221; in case <code>item</code> is the enum type <code>weapon(Int, Int)</code>. This way you can associate additional values with an enum case.</p>
 
 <h2><a name="error-handling"></a> Error Handling</h2>
 
