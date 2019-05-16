@@ -12,8 +12,10 @@
     + [Switch](#switch)
 - [Strings](#strings)
 - [Optionals](#optionals)
-- [Arrays](#arrays)
-- [Dictionaries](#dictionaries)
+- [Collections](#collections)
+    + [Arrays](#arrays)
+    + [Dictionaries](#dictionaries)
+    + [Sets](#sets)
 - [Closures](#closures)
 - [Guard and Defer](#guard-defer)
     + [Guard](#guard)
@@ -359,7 +361,9 @@ One last thing... the _nil-coalescing operator_. You can use it to provide a def
 
 See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOfLife` is `42`. When that function returns a value, it's assigned to `meaningOfLife`.
 
-## <a name="arrays"></a> Arrays
+## <a name="collections"></a> Collections
+
+### <a name="arrays"></a> Arrays
 
 Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have _numerical_ index values. Arrays always contain elements of the same type.
 
@@ -381,7 +385,13 @@ You can iterate arrays, like this:
         print(name)
     }
 
-## <a name="dictionaries"></a> Dictionaries
+A helpful function on arrays is `enumerated()`. It lets you iterate index-value pairs, like this:
+
+    for (index, name) in hitchhikers.enumerated() {
+        print("\(index) = \(name)")
+    }
+
+### <a name="dictionaries"></a> Dictionaries
 
 Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:
 
@@ -394,8 +404,20 @@ Dictionaries are also collection types. The items in a dictionary consists of ke
 
 What's the type of this dictionary? It's `[String: Int]`. Just like with arrays, you can use _subscript syntax_ to get the value for a key:
 
-    print(score["Zoidberg"])
-    // Output: 0
+    print(score["Leela"])
+    // Output: 29
+
+You can add a key-value pair to a dictionary like this:
+
+    score["Amy"] = 9001
+
+Change it like this:
+
+    score["Bender"] = -1
+
+And remove it like this:
+
+    score.removeValue(forKey: "Zoidberg")
 
 You can also iterate a dictionary, like this:
 
@@ -403,6 +425,64 @@ You can also iterate a dictionary, like this:
     {
         print("\(name) has \(points) points");
     }
+
+### <a name="sets"></a> Sets
+
+_Sets_ in Swift are similar to arrays and dictionaries. Just like arrays and dictionaries, the `Set` type is used to store multiple items of the same type in one collection.
+
+Here's an example:
+
+    var fruit:Set = ["apple", "banana", "strawberry", "jackfruit"]
+
+You can add and remove items like this:
+
+    fruit.insert("pineapple")
+    fruit.remove("banana")
+
+Sets are different from arrays and dictionaries, in these ways:
+
+- Sets don't have an order – they're literally unsorted
+- Every item in a set needs to be unique
+- Sets don't have indices or keys
+- Instead, a set's values need to be _hashable_
+- Because set items are hashable, you can search sets in _O(1)_ time
+
+Here's how you can quickly search a set:
+
+    let movies:Set = ["Rocky", "The Matrix", "Lord of the Rings"]
+
+    if movies.contains("Rocky") {
+        print("Rocky is one of your favorite movies!")
+    }
+
+Sets are particularly useful for membership operations, to find out if sets have items in common for example. We can make a union of sets, subtract sets, intersect them, and find their differences.
+
+Consider the following Italian coffees and their ingredients:
+
+    let cappuccino:Set = ["espresso", "milk", "milk foam"]
+    let americano:Set  = ["espresso", "water"]
+    let machiato:Set   = ["espresso", "milk foam"]
+    let latte:Set      = ["espresso", "milk"]
+
+Can we find the **union** (add items) of two coffees?
+    
+    machiato.union(latte)
+    // ["espresso", "milk foam", "milk"]
+
+Can we **subtract** one coffee from another?
+
+    cappuccino.subtracting(americano)
+    // ["milk foam", "milk"]
+
+Can we find the **intersection** (shared items) of two coffees?
+
+    latte.intersection(cappuccino)
+    ["espresso", "milk"]
+
+Can we find the **difference** between two coffees?
+    
+    latte.symmetricDifference(americano)
+    ["milk", "water"]
 
 ## <a name="closures"></a> Closures
 
