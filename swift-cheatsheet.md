@@ -22,6 +22,7 @@
     + [Defer](#defer)
 - [Generics](#generics)
 - [Tuples](#tuples)
+- [Enumerations](#enums)
 - [Error Handling](#error-handling)
 - [Resources](#resources)
 
@@ -181,6 +182,15 @@ You can create an _instance_ of a class, and change its properties, like this:
 
     let buildingA = Office()
     buildingA.address = "Sector ZZ9 Plural Z Alpha"
+
+Extensions let you add new functions to existing types. This is useful in scenarios where you can't change the code of a class. Like this:
+
+    extension Building
+    {
+        func evacuate() {
+            print("Please leave the building in an orderly fashion.")
+        }
+    }
 
 ## <a name="control-flow"></a> Control Flow
 
@@ -609,6 +619,82 @@ You can also name the elements of a tuple, like this:
     print(flight.heading) 
     // Output: North
 
+## <a name="enums"></a> Enumerations
+
+With enumerations, also known as enums, you can organize groups of values that are related. Here's an example:
+
+    enum Compass {
+        case north
+        case east
+        case south
+        case west
+    }
+
+Here's how you use them:
+
+    let direction: Compass = .south
+
+Enums and the `switch` statement are a powerful couple. Here's an example:
+
+    enum Emotion {
+        case happy, sad, angry, scared, surprised
+    }
+
+    switch robot.mood {
+    case .angry:
+        robot.destroyAllHumans()
+    case .sad:
+        robot.cry()
+    case .happy:
+        robot.play("happy.mp3")
+    case default:
+        print("Error: emotion not supported.")
+    }
+
+You can also assign raw values to enums, by using existing Swift types like `String`. Here's an example:
+
+    enum Flavor:String {
+        case vanilla = "vanilla"
+        case strawberry = "strawberry"
+        case chocolate = "chocolate"
+    }
+
+With this approach, you can get the string value for an enum like this:
+
+    let icecream = Flavor.vanilla
+    print(icecream.rawValue)
+    // Output: vanilla
+
+You can now also use a string to create an enum, like this:
+
+    let icecream = Flavor(rawValue: "vanilla")
+    print(icecream)
+    // Output: Optional(Flavor.vanilla)
+
+You can also associate values with individual cases of an enumeration, like this:
+
+    enum Item {
+        case weapon(Int, Int)
+        case food(Int)
+        case armor(Int, Int, Double)
+    }
+
+You can now use the enumeration's associated values, like this:
+
+    func use(item: Item)
+    {
+        switch item {
+        case .weapon(let hitPoints, _):
+            player.attack(hitPoints)
+        case .food(let health):
+            player.health += health
+        case .armor(let damageThreshold, let weight, let condition):
+            player.damageThreshold = Double(damageThreshold) * condition
+        }
+    }
+
+In the above code, we're using `hitPoints` to "attack" in case `item` is the enum type `weapon(Int, Int)`. This way you can associate additional values with an enum case.
+
 ## <a name="error-handling"></a> Error Handling
 
 Errors in Swift can be thrown, and should be caught. You can define an error type like this:
@@ -650,11 +736,4 @@ No cheatsheet is complete without a list of resources with more information. Wan
 - [https://github.com/vsouza/awesome-ios](https://github.com/vsouza/awesome-ios)
 - [https://github.com/matteocrippa/awesome-swift](https://github.com/matteocrippa/awesome-swift)
 - [http://online.swiftplayground.run/](http://online.swiftplayground.run/)
-
-
-
-
-
-
-
 
