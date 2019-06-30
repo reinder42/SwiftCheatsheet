@@ -6,9 +6,7 @@
 - [Functions](#functions)
 - [Operators](#operators)
 - [Classes, Objects, Properties](#oop)
-- [Structs and Protocols](#structs-protocols)
-    + [Structs](#structs)
-    + [Protocols](#protocols)
+- [Structs](#structs)
 - [Control Flow](#control-flow)
     + [Conditionals](#conditionals)
     + [Loops](#loops)
@@ -195,36 +193,32 @@ Extensions let you add new functions to existing types. This is useful in scenar
         }
     }
 
-## <a name="structs-protocols"></a> Structures and Protocols
+## <a name="structs"></a> Structs
 
-### <a name="structs"></a> Structs
+Structs or _structures_ in Swift allow you to encapsulate related properties and functionality in your code, that you can reuse. Structs are value types.
 
-Structures or _structs_ in Swift are a value data type (meaning its value is copied when assigned or passed)
-that allows to encapsulate related properties abd behaviors and later reuse it in our code. We declare them
-like this:
+We declare them like this:
 
     struct Jedi {
         var name: String
         var midichlorians: Int
     }
 
-With defined struct we can create the _instance_ if it (Xcode will show our Jedi struct in the auto-completion menu).
+You can create an instance of the `Jedi` struct like this:
 
     var obi_wan = Jedi(name: "Obi-Wan Kenobi", midichlorians: 13400)
-    
-To read a property do this:
 
-    print(obi_wan.midichlorians) // This will output 13400
-    
-### <a name="functions-in-structs"></a> Functions inside structs
+Here's how you can read a property from `obi_wan`:
 
-We can also include functions inside our structs like this:
+    print(obi_wan.midichlorians)
+    // Output: 13400
+
+We can also include functions inside our structs, like this:
 
     struct Jedi {
         var name: String
         var midichlorians: Int
         
-        // Function inside struct
         func mindTrick() {
             print("These aren't the Droids you're looking for...")
         }
