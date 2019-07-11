@@ -7,6 +7,7 @@
 - [Operators](#operators)
 - [Classes, Objects, Properties](#oop)
 - [Structs](#structs)
+- [Protocols](#protocols)
 - [Control Flow](#control-flow)
     + [Conditionals](#conditionals)
     + [Loops](#loops)
@@ -232,6 +233,37 @@ We can also include functions inside our structs, like this:
     
     // Calling mindTrick() function
     obi_wan.mindTrick()
+    
+## <a name="protocols"></a> Protocols
+
+Protocols define a "contract" - set of methods and properties that a type must implement if it _conforms_ to the protocol.
+
+Protocols are declared like this:
+```
+protocol Healer {
+    func heal()
+}
+```
+In this example Imperial troops are fine on their own, but can conform to the `Healer` protocol and support their fellow troopers in combat:
+```
+protocol Healer {
+    func heal()
+}
+
+struct TiePilot {
+    var starfigherModel: String = "TIE/IN Interceptor"
+    var rank: String = "Lieutenant"
+}
+
+struct Stormtrooper: Healer {
+    var name: String = "TK-9091"
+    var unit: String = "501st Legion"
+    
+    func heal() {
+        print("Deploying Advanced Medical Probe!")
+    }
+}
+```
 
 ## <a name="control-flow"></a> Control Flow
 
