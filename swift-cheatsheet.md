@@ -145,7 +145,7 @@ increment(&num) //num == 1
 
 **inout** specifies that the parameter is to be passed by reference. 
 
-The use of the **&** symbol to specifies that the variable is being passed by reference.
+The use of the **&** symbol specifies that the variable is being passed by reference.
 
 In this simple case, we return *Void* due to the actual variable being modified, making a value return redundant.
 
