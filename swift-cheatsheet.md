@@ -4,6 +4,7 @@
 
 - [Variables](#variables)
 - [Functions](#functions)
+    - [Pass by Value vs Pass by Reference](#passby)
 - [Operators](#operators)
 - [Classes, Objects, Properties](#oop)
 - [Structs](#structs)
@@ -87,6 +88,68 @@ You call the function like the following. The function is called, with two argum
     let message = greetUser(name: "Zaphod", bySaying: "Good Morning") 
 
 Courses, books, documentation, etc. uses a special notation for function signatures. It'll use the function name and argument labels, like `greetUser(name:bySaying:)`, to describe the function.
+
+### <a name="passby"></a> Pass by *Value* vs Pass by *Reference*
+
+There are two main ways to pass parameters into functions: 
+
+#### Pass by Value
+
+The default behaviour, where a *copy* of a variable is passed into a function. 
+This copy : 
+
+- Has the same value as its source variable. 
+- Is implicitly *constant*
+- Is only valid for the scope of the function.
+- Is not accessible to the calling function.
+- Is no longer valid once the function completes its execution.
+
+As such, we usually return a new value from the function:
+
+```
+func increment(num: int) -> int
+{
+  //num = num + 1; //Not allowed. 
+  return num + 1;
+}
+
+var num = 0;
+increment(num); //num == 0
+let result = increment(num); //result == 1, num == 0
+```
+
+
+Note, *num* is implicitly constant and so cannot be modified. 
+You may be explicit by specifying the parameter as :
+
+```
+func increment(num: int) -> int
+```
+
+
+
+#### Pass by Reference 
+
+Can be understood as passing in the actual variable. 
+All operations performed on the variable within the function will persist outside of the function. 
+
+```
+func increment(num: inout int) -> Void 
+{
+  num = num + 1;
+}
+
+var num = 0;
+increment(&num) //num == 1
+```
+
+**inout** specifies that the parameter is to be passed by reference. 
+
+The use of the **&** symbol to specifies that the variable is being passed by reference.
+
+In this simple case, we return *Void* due to the actual variable being modified, making a value return redundant.
+
+
 
 ## <a name="operators"></a> Operators
 
