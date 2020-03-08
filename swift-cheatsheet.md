@@ -33,41 +33,59 @@ Use `var` for variables that can change ("mutable") and `let` for constants that
 
 _Integers_ are "whole" numbers, i.e. numbers without a fractional component.
 
-    var meaningOfLife: Int = 42
+```swift
+var meaningOfLife: Int = 42
+```
 
 _Floats_ are decimal-point numbers, i.e. numbers with a fractional component.
 
-    var phi: Float = 1.618
+```swift
+var phi: Float = 1.618
+```
 
 _Doubles_ are floating point numbers with double precision, i.e. numbers with a fractional component. Doubles are preferred over floats.
 
-    let pi: Double = 3.14159265359
+```swift
+let pi: Double = 3.14159265359
+```
 
 A _String_ is a sequence of characters, like text.
 
-    var message: String = "Hello World!"
+```swift
+var message: String = "Hello World!"
+```
 
 A _boolean_ can be either `true` or `false`. You use booleans for logical operations.
 
-    var isLoggedIn: Bool = false
+```swift
+var isLoggedIn: Bool = false
+```
 
 You can assign the result of an expression to a variable, like this:
 
-    var result: Int = 1 + 2
+```swift
+var result: Int = 1 + 2
+```
 
 An _expression_ is programmer lingo for putting stuff like variables, operators, constants, functions, etc. together. Like `a + b` in this example:
 
-    let a = 3
-    let b = 4
-    let c = a + b
+```swift
+let a = 3
+let b = 4
+let c = a + b
+```
 
 Swift can determine the _type_ (`Int`, `Double`, `String`, etc.) of a variable on its own. This is called _type inference_. In this example, the type of `name` is inferred to be `String`.
 
-    var name = "Arthur Dent"
+```swift
+var name = "Arthur Dent"
+```
 
 Variables can be _optional_, which means it either contains a value or it's `nil`. Optionals make coding Swift safer and more productive. Here's an optional string:
 
-    var optionalMessage: String?
+```swift
+var optionalMessage: String?
+```
 
 ## <a name="functions"></a> Functions
 
@@ -75,16 +93,20 @@ _Functions_ are containers of Swift code. They have input and output. You often 
 
 Here's an example of a function:
 
-    func greetUser(name: String, bySaying greeting:String = "Hello") -> String
-    {
-        return "\(greeting), \(name)"
-    }
+```swift
+func greetUser(name: String, bySaying greeting:String = "Hello") -> String
+{
+    return "\(greeting), \(name)"
+}
+```
 
 This function has two _parameters_ called `name` and `greeting`, both of type `String`. The second parameter `greeting` has an _argument label_ `bySaying`. The return type of the function is `String`, and its code is written between those squiggly brackets.
 
 You call the function like the following. The function is called, with two arguments, and the return value of the function is assigned to `message`.
 
-    let message = greetUser(name: "Zaphod", bySaying: "Good Morning") 
+```swift
+let message = greetUser(name: "Zaphod", bySaying: "Good Morning") 
+```
 
 Courses, books, documentation, etc. uses a special notation for function signatures. It'll use the function name and argument labels, like `greetUser(name:bySaying:)`, to describe the function.
 
@@ -92,7 +114,9 @@ Courses, books, documentation, etc. uses a special notation for function signatu
 
 The _assignment operator_ `=` assigns what's right of the operator to what's left of the operator. Don't confuse it with `==`!
 
-    let age = 42
+```swift
+let age = 42
+```
 
 Swift has a few basic math operators:
 
@@ -110,8 +134,10 @@ Unlike other programming languages, Swift does not have `--` and `++` operators.
 
 You can also use `+=` for arrays:
 
-    var rappers = ["Eminem", "Jay-Z", "Snoop Dogg"]
-    rappers += ["Tupac"]
+```swift
+var rappers = ["Eminem", "Jay-Z", "Snoop Dogg"]
+rappers += ["Tupac"]
+```
 
 Swift has 6 comparison operators:
 
@@ -126,9 +152,11 @@ Swift also has the identity operators `===` and `!==`. You can use them to test 
 
 You can also compare strings, which is helpful for sorting. Like this:
 
-    "abc" > "xyz"         // false
-    "Starbucks" > "Costa" // true
-    "Alice" < "Bob"       // true
+```swift
+"abc" > "xyz"         // false
+"Starbucks" > "Costa" // true
+"Alice" < "Bob"       // true
+```
 
 Swift has 3 logical operators:
 
@@ -151,27 +179,37 @@ You can also use _one-sided ranges_. They're especially useful in arrays.
 
 Classes are basic building blocks for apps. They can contain functions, sometimes called _methods_, and variables, called _properties_.
 
-    class Office: Building, Constructable
+```swift
+class Office: Building, Constructable
+{
+    var address: String = "1 Infinite Loop"
+    var phone: String?
+```
+
+```swift
+    @IBOutlet weak var submitButton:UIButton?
+```
+
+```swift
+    lazy var articles:String = {
+        return Database.getArticles()
+    }()
+```
+
+```swift
+    override init()
     {
-        var address: String = "1 Infinite Loop"
-        var phone: String?
-
-        @IBOutlet weak var submitButton:UIButton?
-
-        lazy var articles:String = {
-            return Database.getArticles()
-        }()
-
-        override init()
-        {
-            address = "1 Probability Drive"
-        }
-
-        func startWorking(_ time:String, withWorkers workers:Int)
-        {
-            print("Starting working at time \(time) with workers \(workers)")
-        }
+        address = "1 Probability Drive"
     }
+```
+
+```swift
+    func startWorking(_ time:String, withWorkers workers:Int)
+    {
+        print("Starting working at time \(time) with workers \(workers)")
+    }
+}
+```
 
 The class definition starts with `class`, then the class name `Office`, then the `Building` class it _inherits_ from, and then the `Constructable` _protocol_ it conforms to. Inheritance, protocols, all that stuff, is part of _Object-Oriented Programming_.
 
@@ -181,17 +219,21 @@ The function `init()` is _overridden_ from the superclass `Building`. The class 
 
 You can create an _instance_ of a class, and change its properties, like this:
 
-    let buildingA = Office()
-    buildingA.address = "Sector ZZ9 Plural Z Alpha"
+```swift
+let buildingA = Office()
+buildingA.address = "Sector ZZ9 Plural Z Alpha"
+```
 
 Extensions let you add new functions to existing types. This is useful in scenarios where you can't change the code of a class. Like this:
 
-    extension Building
-    {
-        func evacuate() {
-            print("Please leave the building in an orderly fashion.")
-        }
+```swift
+extension Building
+{
+    func evacuate() {
+        print("Please leave the building in an orderly fashion.")
     }
+}
+```
 
 ## <a name="structs"></a> Structs
 
@@ -199,39 +241,47 @@ Structs or _structures_ in Swift allow you to encapsulate related properties and
 
 We declare them like this:
 
-    struct Jedi {
-        var name: String
-        var midichlorians: Int
-    }
+```swift
+struct Jedi {
+    var name: String
+    var midichlorians: Int
+}
+```
 
 You can create an instance of the `Jedi` struct like this:
 
-    var obi_wan = Jedi(name: "Obi-Wan Kenobi", midichlorians: 13400)
+```swift
+var obi_wan = Jedi(name: "Obi-Wan Kenobi", midichlorians: 13400)
+```
 
 Here's how you can read a property from `obi_wan`:
 
-    print(obi_wan.midichlorians)
-    // Output: 13400
+```swift
+print(obi_wan.midichlorians)
+// Output: 13400
+```
 
 We can also include functions inside our structs, like this:
 
-    struct Jedi {
-        var name: String
-        var midichlorians: Int
-        
-        func mindTrick() {
-            print("These aren't the Droids you're looking for...")
-        }
+```swift
+struct Jedi {
+    var name: String
+    var midichlorians: Int
+    
+    func mindTrick() {
+        print("These aren't the Droids you're looking for...")
     }
-    
-    // Instance of a struct
-    var obi_wan = Jedi(name: "Obi-Wan Kenobi", midichlorians: 13400)
-    
-    // Reading a property
-    print(obi_wan.midichlorians) 
-    
-    // Calling mindTrick() function
-    obi_wan.mindTrick()
+}
+
+// Instance of a struct
+var obi_wan = Jedi(name: "Obi-Wan Kenobi", midichlorians: 13400)
+
+// Reading a property
+print(obi_wan.midichlorians) 
+
+// Calling mindTrick() function
+obi_wan.mindTrick()
+```
 
 ## <a name="control-flow"></a> Control Flow
 
@@ -239,96 +289,118 @@ We can also include functions inside our structs, like this:
 
 This is an `if`-statement, or _conditional_. You use them to make decisions based on logic.
 
-    if isActive
-    {
-        print("This user is ACTIVE!")
-    } else {
-        print("Inactive user...")
-    }
+```swift
+if isActive
+{
+    print("This user is ACTIVE!")
+} else {
+    print("Inactive user...")
+}
+```
 
 You can combine multiple conditionals with the `if-elseif-else` syntax, like this:
 
-    var user:String = "Bob"
+```swift
+var user:String = "Bob"
+```
 
-    if user == "Alice" && isActive
-    {
-        print("Alice is active!")
-    }
-    else if user == "Bob" && !isActive
-    {
-        print("Bob is lazy!")
-    }
-    else
-    {
-        print("When none of the above are true...")
-    }
+```swift
+if user == "Alice" && isActive
+{
+    print("Alice is active!")
+}
+else if user == "Bob" && !isActive
+{
+    print("Bob is lazy!")
+}
+else
+{
+    print("When none of the above are true...")
+}
+```
 
 The `&&` is the _Logical AND_ operator. You use it to create logical expressions that can be evaluated to `true` or `false`. Like this:
 
-    if user == "Deep Thought" || meaningOfLife == 42
-    {
-        print("The user is Deep Thought, or the meaning of life is 42...")
-    } 
+```swift
+if user == "Deep Thought" || meaningOfLife == 42
+{
+    print("The user is Deep Thought, or the meaning of life is 42...")
+} 
+```
 
 Conditionals can be challenging to comprehend. Like this:
 
-    if c < a && b + c == a
-    {
-        print("Will this ever happen?")
-    }
+```swift
+if c < a && b + c == a
+{
+    print("Will this ever happen?")
+}
+```
 
 Swift has a special operator, called the _ternary conditional operator_. It's coded as `a ? b : c`. If `a` is `true`, the expression returns `b`, and if `a` is `false`, the expression returns `c`. It's the equivalent of this:
 
-    if a {
-        b
-    } else {
-        c
-    }
+```swift
+if a {
+    b
+} else {
+    c
+}
+```
 
 ### <a name="loops"></a> Loops
 
 Loops repeat stuff. It's that easy. Like this:
 
-    for i in 1...5 {
-        print(i)
-    }
+```swift
+for i in 1...5 {
+    print(i)
+}
+```
 
 This prints `1` to `5`, including `5`! You can also use the _half-open range operator_ `a..<b` to loop from `a` to `b` _not including_ `b`. Like this:
 
-    for i in 1..<4 {
-        print(i)
-    }
-    // Output: 1 2 3
+```swift
+for i in 1..<4 {
+    print(i)
+}
+// Output: 1 2 3
+```
 
 When you don't know how many times a loop needs to run _exactly_, you can use a `while` loop. A `while` loop keeps iterating as long as its expression is `true`.
 
-    while b <= 60 && b > 0
-    {
-        print(b)
-        b -= 1
-    }
+```swift
+while b <= 60 && b > 0
+{
+    print(b)
+    b -= 1
+}
+```
 
 ### <a name="switch"></a> Switch
 
 A `switch` statement takes a value and compares it against one of several _cases_. It's similar to the `if-else if-else` conditional, and it's an elegant way of dealing with multiple states.
 
 An example:
-    
-    let weather = ...
+```swift
 
-    switch weather 
-    {
-        case .rain:
-            print("Bring a raincoat!")
-        case .clear, .sunny:
-            print("Don't forget your sunglasses.")
-        case .overcast:
-            print("It's really depressing.")
-        case .tsunami, .earthquake:
-            print("OH NO! BIG WAVE!")
-        default:
-            print("Expect the best, prepare for the worst.")
-    }
+let weather = ...
+```
+
+```swift
+switch weather 
+{
+    case .rain:
+        print("Bring a raincoat!")
+    case .clear, .sunny:
+        print("Don't forget your sunglasses.")
+    case .overcast:
+        print("It's really depressing.")
+    case .tsunami, .earthquake:
+        print("OH NO! BIG WAVE!")
+    default:
+        print("Expect the best, prepare for the worst.")
+}
+```
 
 In Swift, `switch` statements don't have an implicit _fall-through_, but you can use `fallthrough` explicitly. Every case needs to have at least one line of code in it. You don't have to use a `break` explicitly to end a case.
 
@@ -340,39 +412,53 @@ You can also use Swift _ranges_ to match interval for numbers, use tuples to mat
 
 Strings are pretty cool. Here's an example:
 
-    var jobTitle: String = "iOS App Developer"
+```swift
+var jobTitle: String = "iOS App Developer"
+```
 
 Inside a string, you can use _string interpolation_ to string together multiple strings. Like this:
 
-    var hello = "Hello, \(jobTitle)"
-    // Output: Hello, iOS App Developer
+```swift
+var hello = "Hello, \(jobTitle)"
+// Output: Hello, iOS App Developer
+```
 
 You can also turn an `Int` into a `String`:
 
-    let number = 42
-    let numberAsString = "\(number)"
+```swift
+let number = 42
+let numberAsString = "\(number)"
+```
 
 And vice-versa:
 
-    let number = "42"
-    let numberAsInt = Int(number)
+```swift
+let number = "42"
+let numberAsInt = Int(number)
+```
 
 You can loop over the characters of a string like this:
 
-    let text = "Forty-two!"
+```swift
+let text = "Forty-two!"
+```
 
-    for char in text {
-        print(char)
-    }
+```swift
+for char in text {
+    print(char)
+}
+```
 
 You can get individual characters and character ranges by using _indices_, like this:
 
-    let text = "Forty-two!"
-    text[text.startIndex] // F
-    text[text.index(before: text.endIndex)] // !
-    text[text.index(text.startIndex, offsetBy: 3)] // t
-    text[..<text.index(text.startIndex, offsetBy: 3)] // For
-    text[text.index(text.endIndex, offsetBy: -4)...] // two!
+```swift
+let text = "Forty-two!"
+text[text.startIndex] // F
+text[text.index(before: text.endIndex)] // !
+text[text.index(text.startIndex, offsetBy: 3)] // t
+text[..<text.index(text.startIndex, offsetBy: 3)] // For
+text[text.index(text.endIndex, offsetBy: -4)...] // two!
+```
 
 ## <a name="optionals"></a> Optionals
 
@@ -380,35 +466,47 @@ _Optionals_ can either be `nil` or contain a value. You **must** always _unwrap_
 
 This is Bill. Bill is an optional.
 
-    var bill: String? = nil
+```swift
+var bill: String? = nil
+```
 
 You can unwrap `bill` in a number of ways. First, this is _optional binding_.
 
-    if let definiteBill = bill {
-        print(definiteBill)
-    }
+```swift
+if let definiteBill = bill {
+    print(definiteBill)
+}
+```
 
 In this example, you bind the non-optional value from `bill` to `definiteBill` _but only when `bill` is not `nil`_. It's like asking: "Is it not `nil`?" OK, if not, then assign it to this constant and execute that stuff between the squiggly brackets.
 
 You can also use _force-unwrapping_ to unwrap an optional. Like this:
 
-    var droid: String? = "R2D2"
+```swift
+var droid: String? = "R2D2"
+```
 
-    if droid != nil {
-        print("This is not the droid you're looking for: \(droid!)")
-    }
+```swift
+if droid != nil {
+    print("This is not the droid you're looking for: \(droid!)")
+}
+```
 
 See how that `droid` is force-unwrapped with the exclamation mark `!`? You should keep in mind that if `droid` is `nil` when you force-unwrap it, your app will crash.
 
 You can also use _optional chaining_ to work your way through a number of optionals. This saves you from coding too much optional binding blocks. Like this:
 
-    view?.button?.title = "BOOYAH!"
+```swift
+view?.button?.title = "BOOYAH!"
+```
 
 In this code, `view`, `button` and `title` are all optionals. When `view` is `nil`, the code "stops" before `button`, so the `button` property is never accessed.
 
 One last thing... the _nil-coalescing operator_. You can use it to provide a default value when an expression results in `nil`. Like this:
 
-    var meaningOfLife = deepThought.think() ?? 42
+```swift
+var meaningOfLife = deepThought.think() ?? 42
+```
 
 See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOfLife` is `42`. When that function returns a value, it's assigned to `meaningOfLife`.
 
@@ -418,64 +516,86 @@ See that `??`. When `deepThought.think()` returns `nil`, the variable `meaningOf
 
 Arrays are a collection type. Think of it as a variable that can hold multiple values, like a closet that can contain multiple drawers. Arrays always have _numerical_ index values. Arrays always contain elements of the same type.
 
-    var hitchhikers = ["Ford", "Arthur", "Zaphod", "Trillian"]
+```swift
+var hitchhikers = ["Ford", "Arthur", "Zaphod", "Trillian"]
+```
 
 You can add items to the array:
 
-    hitchhikers += ["Marvin"]
+```swift
+hitchhikers += ["Marvin"]
+```
 
 You can get items from the array with _subscript syntax_:
 
-    let arthur = hitchhikers[1]
+```swift
+let arthur = hitchhikers[1]
+```
 
 Remember that arrays are _zero-index_, so the index number of the first element is `0` (and not `1`).
 
 You can iterate arrays, like this:
 
-    for name in hitchhikers {
-        print(name)
-    }
+```swift
+for name in hitchhikers {
+    print(name)
+}
+```
 
 A helpful function on arrays is `enumerated()`. It lets you iterate index-value pairs, like this:
 
-    for (index, name) in hitchhikers.enumerated() {
-        print("\(index) = \(name)")
-    }
+```swift
+for (index, name) in hitchhikers.enumerated() {
+    print("\(index) = \(name)")
+}
+```
 
 ### <a name="dictionaries"></a> Dictionaries
 
 Dictionaries are also collection types. The items in a dictionary consists of key-value pairs. Unlike arrays, you can set your own key type. Like this:
 
-    var score = [
-        "Fry": 10,
-        "Leela": 29,
-        "Bender": 1,
-        "Zoidberg": 0
-    ]
+```swift
+var score = [
+    "Fry": 10,
+    "Leela": 29,
+    "Bender": 1,
+    "Zoidberg": 0
+]
+```
 
 What's the type of this dictionary? It's `[String: Int]`. Just like with arrays, you can use _subscript syntax_ to get the value for a key:
 
-    print(score["Leela"])
-    // Output: 29
+```swift
+print(score["Leela"])
+// Output: 29
+```
 
 You can add a key-value pair to a dictionary like this:
 
-    score["Amy"] = 9001
+```swift
+score["Amy"] = 9001
+```
 
 Change it like this:
 
-    score["Bender"] = -1
+```swift
+score["Bender"] = -1
+```
 
 And remove it like this:
 
-    score.removeValue(forKey: "Zoidberg")
+```swift
+score.removeValue(forKey: "Zoidberg")
+```
 
 You can also iterate a dictionary, like this:
 
-    for (name, points) in score
-    {
-        print("\(name) has \(points) points");
-    }
+```swift
+for (name, points) in score
+{
+    print("\(name) has \(points) points");
+}
+```
 
 ### <a name="sets"></a> Sets
 
@@ -483,12 +603,16 @@ _Sets_ in Swift are similar to arrays and dictionaries. Just like arrays and dic
 
 Here's an example:
 
-    var fruit:Set = ["apple", "banana", "strawberry", "jackfruit"]
+```swift
+var fruit:Set = ["apple", "banana", "strawberry", "jackfruit"]
+```
 
 You can add and remove items like this:
 
-    fruit.insert("pineapple")
-    fruit.remove("banana")
+```swift
+fruit.insert("pineapple")
+fruit.remove("banana")
+```
 
 Sets are different from arrays and dictionaries, in these ways:
 
@@ -500,40 +624,54 @@ Sets are different from arrays and dictionaries, in these ways:
 
 Here's how you can quickly search a set:
 
-    let movies:Set = ["Rocky", "The Matrix", "Lord of the Rings"]
+```swift
+let movies:Set = ["Rocky", "The Matrix", "Lord of the Rings"]
+```
 
-    if movies.contains("Rocky") {
-        print("Rocky is one of your favorite movies!")
-    }
+```swift
+if movies.contains("Rocky") {
+    print("Rocky is one of your favorite movies!")
+}
+```
 
 Sets are particularly useful for membership operations, to find out if sets have items in common for example. We can make a union of sets, subtract sets, intersect them, and find their differences.
 
 Consider the following Italian coffees and their ingredients:
 
-    let cappuccino:Set = ["espresso", "milk", "milk foam"]
-    let americano:Set  = ["espresso", "water"]
-    let machiato:Set   = ["espresso", "milk foam"]
-    let latte:Set      = ["espresso", "milk"]
+```swift
+let cappuccino:Set = ["espresso", "milk", "milk foam"]
+let americano:Set  = ["espresso", "water"]
+let machiato:Set   = ["espresso", "milk foam"]
+let latte:Set      = ["espresso", "milk"]
+```
 
 Can we find the **union** (add items) of two coffees?
-    
-    machiato.union(latte)
-    // ["espresso", "milk foam", "milk"]
+```swift
+
+machiato.union(latte)
+// ["espresso", "milk foam", "milk"]
+```
 
 Can we **subtract** one coffee from another?
 
-    cappuccino.subtracting(americano)
-    // ["milk foam", "milk"]
+```swift
+cappuccino.subtracting(americano)
+// ["milk foam", "milk"]
+```
 
 Can we find the **intersection** (shared items) of two coffees?
 
-    latte.intersection(cappuccino)
-    ["espresso", "milk"]
+```swift
+latte.intersection(cappuccino)
+["espresso", "milk"]
+```
 
 Can we find the **difference** between two coffees?
-    
-    latte.symmetricDifference(americano)
-    ["milk", "water"]
+```swift
+
+latte.symmetricDifference(americano)
+["milk", "water"]
+```
 
 ## <a name="closures"></a> Closures
 
@@ -541,23 +679,31 @@ With _closures_ you can pass around blocks of code, like functions, as if they a
 
 You define a closure like this:
 
-    let authenticate = { (name: String, userLevel: Int) -> Bool in
-        return (name == "Bob" || name == "Alice") && userLevel > 3
-    }
+```swift
+let authenticate = { (name: String, userLevel: Int) -> Bool in
+    return (name == "Bob" || name == "Alice") && userLevel > 3
+}
+```
 
 You call the closure like this:
 
-    authenticate("Bob", 7)
+```swift
+authenticate("Bob", 7)
+```
 
 If we had a user interface for authenticating a user, then we could pass the closure as a callback like this:
 
-    let loginVC = MyLoginViewController(withAuthCallback: authenticate)
+```swift
+let loginVC = MyLoginViewController(withAuthCallback: authenticate)
+```
 
 Another use case for closures is multi-threading with Grand Central Dispatch. Like this:
 
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(60)) {  
-        // Dodge this!  
-    }
+```swift
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(60)) {  
+    // Dodge this!  
+}
+```
 
 In the above example, the last argument of `asyncAfter(deadline:execute:)` is a closure. It uses the _trailing closure_ syntax. When a closure is the last argument of a function call, you can write it after the function call parentheses and omit the argument label.
 
@@ -569,14 +715,18 @@ The `guard` statement helps you to return functions early. It's a conditional, a
 
 Like this:
 
-    func loadTweets(forUserID userID: Int) 
-    {
-        guard userID > 0 else {
-            return
-        }
-
-        // Load the tweets...
+```swift
+func loadTweets(forUserID userID: Int) 
+{
+    guard userID > 0 else {
+        return
     }
+```
+
+```swift
+    // Load the tweets...
+}
+```
 
 You can read that as: _"Guard that the User ID is greater than zero, or else, exit this function"_. Guard is especially powerful when you have multiple conditions that should return the function.
 
@@ -584,9 +734,11 @@ Guard blocks always need to exit its enclosing scope, i.e. transfer control outs
 
 You can also combine `guard` and `if let` (optional binding) into `guard let`. This checks if the given expression is not `nil`, and assigns it to a constant. When the expression is `nil`, the `else` clause of `guard` is executed.
 
-    guard let user = object?.user else {
-        return
-    }
+```swift
+guard let user = object?.user else {
+    return
+}
+```
 
 You can now use the `user` constant in the rest of the scope, below the `guard let` block.
 
@@ -596,24 +748,36 @@ With `defer` you can define a code block that's executed when your function retu
 
 Like this:
 
-    func saveFile(withData data: Data) {
+```swift
+func saveFile(withData data: Data) {
+```
 
-        let filePointer = openFile("../example.txt")
+```swift
+    let filePointer = openFile("../example.txt")
+```
 
-        defer {
-            closeFile(filePointer)
-        }
-
-        if filePointer.size > 0 {
-            return
-        }
-
-        if data.size > 512 {
-            return
-        }
-
-        writeFile(filePointer, withData: data)
+```swift
+    defer {
+        closeFile(filePointer)
     }
+```
+
+```swift
+    if filePointer.size > 0 {
+        return
+    }
+```
+
+```swift
+    if data.size > 512 {
+        return
+    }
+```
+
+```swift
+    writeFile(filePointer, withData: data)
+}
+```
 
 In the example code you're opening a file and writing some data to it. As a rule, you need to close the file pointer before exiting the function. 
 
@@ -627,10 +791,12 @@ In Swift your variables are _strong typed_. When you set the type of animals you
 
 Like this:
 
-    func insertAnimal<T>(_ animal: T, inFarm farm: Farm) 
-    {
-        // Insert `animal` in `farm`
-    }
+```swift
+func insertAnimal<T>(_ animal: T, inFarm farm: Farm) 
+{
+    // Insert `animal` in `farm`
+}
+```
 
 This is a _generic function_. It uses a _placeholder type_ called `T` instead of an actual type name, like `String`. 
 
@@ -640,99 +806,125 @@ If you want to insert ducks, cows, birds and chickens in your farm, you can now 
 
 With _tuples_ you get two (or more) variables for one. They help you structure your code better. Like this:
 
-    let coffee = ("Cappuccino", 3.99)
+```swift
+let coffee = ("Cappuccino", 3.99)
+```
 
 You can now get the price of the coffee like this:
 
-    let (name, price) = coffee
-    print(price)
-    // Output: 3.99
+```swift
+let (name, price) = coffee
+print(price)
+// Output: 3.99
+```
 
 When you need just the name, you can do this:
 
-    let (name, _) = coffee
-    print(name)
-    // Output: Cappuccino
+```swift
+let (name, _) = coffee
+print(name)
+// Output: Cappuccino
+```
 
 You can also name the elements of a tuple, like this:
 
-    let flight = (code: "XJ601", heading: "North", passengers: 216)
-    print(flight.heading) 
-    // Output: North
+```swift
+let flight = (code: "XJ601", heading: "North", passengers: 216)
+print(flight.heading) 
+// Output: North
+```
 
 ## <a name="enums"></a> Enumerations
 
 With enumerations, also known as enums, you can organize groups of values that are related. Here's an example:
 
-    enum Compass {
-        case north
-        case east
-        case south
-        case west
-    }
+```swift
+enum Compass {
+    case north
+    case east
+    case south
+    case west
+}
+```
 
 Here's how you use them:
 
-    let direction: Compass = .south
+```swift
+let direction: Compass = .south
+```
 
 Enums and the `switch` statement are a powerful couple. Here's an example:
 
-    enum Emotion {
-        case happy, sad, angry, scared, surprised
-    }
+```swift
+enum Emotion {
+    case happy, sad, angry, scared, surprised
+}
+```
 
-    switch robot.mood {
-    case .angry:
-        robot.destroyAllHumans()
-    case .sad:
-        robot.cry()
-    case .happy:
-        robot.play("happy.mp3")
-    case default:
-        print("Error: emotion not supported.")
-    }
+```swift
+switch robot.mood {
+case .angry:
+    robot.destroyAllHumans()
+case .sad:
+    robot.cry()
+case .happy:
+    robot.play("happy.mp3")
+case default:
+    print("Error: emotion not supported.")
+}
+```
 
 You can also assign raw values to enums, by using existing Swift types like `String`. Here's an example:
 
-    enum Flavor:String {
-        case vanilla = "vanilla"
-        case strawberry = "strawberry"
-        case chocolate = "chocolate"
-    }
+```swift
+enum Flavor:String {
+    case vanilla = "vanilla"
+    case strawberry = "strawberry"
+    case chocolate = "chocolate"
+}
+```
 
 With this approach, you can get the string value for an enum like this:
 
-    let icecream = Flavor.vanilla
-    print(icecream.rawValue)
-    // Output: vanilla
+```swift
+let icecream = Flavor.vanilla
+print(icecream.rawValue)
+// Output: vanilla
+```
 
 You can now also use a string to create an enum, like this:
 
-    let icecream = Flavor(rawValue: "vanilla")
-    print(icecream)
-    // Output: Optional(Flavor.vanilla)
+```swift
+let icecream = Flavor(rawValue: "vanilla")
+print(icecream)
+// Output: Optional(Flavor.vanilla)
+```
 
 You can also associate values with individual cases of an enumeration, like this:
 
-    enum Item {
-        case weapon(Int, Int)
-        case food(Int)
-        case armor(Int, Int, Double)
-    }
+```swift
+enum Item {
+    case weapon(Int, Int)
+    case food(Int)
+    case armor(Int, Int, Double)
+}
+```
 
 You can now use the enumeration's associated values, like this:
 
-    func use(item: Item)
-    {
-        switch item {
-        case .weapon(let hitPoints, _):
-            player.attack(hitPoints)
-        case .food(let health):
-            player.health += health
-        case .armor(let damageThreshold, let weight, let condition):
-            player.damageThreshold = Double(damageThreshold) * condition
-        }
+```swift
+func use(item: Item)
+{
+    switch item {
+    case .weapon(let hitPoints, _):
+        player.attack(hitPoints)
+    case .food(let health):
+        player.health += health
+    case .armor(let damageThreshold, let weight, let condition):
+        player.damageThreshold = Double(damageThreshold) * condition
     }
+}
+```
 
 In the above code, we're using `hitPoints` to "attack" in case `item` is the enum type `weapon(Int, Int)`. This way you can associate additional values with an enum case.
 
@@ -740,29 +932,37 @@ In the above code, we're using `hitPoints` to "attack" in case `item` is the enu
 
 Errors in Swift can be thrown, and should be caught. You can define an error type like this:
 
-    enum CreditCardError: Error {
-        case insufficientFunds
-        case issuerDeclined
-        case invalidCVC
-    }
+```swift
+enum CreditCardError: Error {
+    case insufficientFunds
+    case issuerDeclined
+    case invalidCVC
+}
+```
 
 When you code a function that can throw errors, you have to mark its function definition with `throws`. Like this:
 
-    func processPayment(creditcard: String) throws {
-        ...
+```swift
+func processPayment(creditcard: String) throws {
+    ...
+```
 
 Inside the function, you can then throw an error like this:
 
-    throw CreditCardError.insufficientFunds
+```swift
+throw CreditCardError.insufficientFunds
+```
 
 When you _use_ a function that can throw errors, you have to wrap it in a `do-try-catch` block. Like this:
 
-    do {
-        try processPayment(creditcard: "1234.1234")
-    }
-    catch let error {
-        print(error)
-    }
+```swift
+do {
+    try processPayment(creditcard: "1234.1234")
+}
+catch let error {
+    print(error)
+}
+```
 
 In the example above, the `processPayment(creditcard:)` function is marked with the `try` keyword. When an error occurs, the `catch` block is executed.
 
@@ -777,4 +977,3 @@ No cheatsheet is complete without a list of resources with more information. Wan
 - [https://github.com/vsouza/awesome-ios](https://github.com/vsouza/awesome-ios)
 - [https://github.com/matteocrippa/awesome-swift](https://github.com/matteocrippa/awesome-swift)
 - [http://online.swiftplayground.run/](http://online.swiftplayground.run/)
-
