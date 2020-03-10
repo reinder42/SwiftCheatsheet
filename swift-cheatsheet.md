@@ -184,26 +184,18 @@ class Office: Building, Constructable
 {
     var address: String = "1 Infinite Loop"
     var phone: String?
-```
 
-```swift
     @IBOutlet weak var submitButton:UIButton?
-```
 
-```swift
     lazy var articles:String = {
         return Database.getArticles()
     }()
-```
 
-```swift
     override init()
     {
         address = "1 Probability Drive"
     }
-```
 
-```swift
     func startWorking(_ time:String, withWorkers workers:Int)
     {
         print("Starting working at time \(time) with workers \(workers)")
@@ -302,9 +294,7 @@ You can combine multiple conditionals with the `if-elseif-else` syntax, like thi
 
 ```swift
 var user:String = "Bob"
-```
 
-```swift
 if user == "Alice" && isActive
 {
     print("Alice is active!")
@@ -384,9 +374,7 @@ An example:
 ```swift
 
 let weather = ...
-```
 
-```swift
 switch weather 
 {
     case .rain:
@@ -441,9 +429,7 @@ You can loop over the characters of a string like this:
 
 ```swift
 let text = "Forty-two!"
-```
 
-```swift
 for char in text {
     print(char)
 }
@@ -484,9 +470,7 @@ You can also use _force-unwrapping_ to unwrap an optional. Like this:
 
 ```swift
 var droid: String? = "R2D2"
-```
 
-```swift
 if droid != nil {
     print("This is not the droid you're looking for: \(droid!)")
 }
@@ -626,9 +610,7 @@ Here's how you can quickly search a set:
 
 ```swift
 let movies:Set = ["Rocky", "The Matrix", "Lord of the Rings"]
-```
 
-```swift
 if movies.contains("Rocky") {
     print("Rocky is one of your favorite movies!")
 }
@@ -721,9 +703,7 @@ func loadTweets(forUserID userID: Int)
     guard userID > 0 else {
         return
     }
-```
 
-```swift
     // Load the tweets...
 }
 ```
@@ -750,31 +730,21 @@ Like this:
 
 ```swift
 func saveFile(withData data: Data) {
-```
 
-```swift
     let filePointer = openFile("../example.txt")
-```
 
-```swift
     defer {
         closeFile(filePointer)
     }
-```
 
-```swift
     if filePointer.size > 0 {
         return
     }
-```
 
-```swift
     if data.size > 512 {
         return
     }
-```
 
-```swift
     writeFile(filePointer, withData: data)
 }
 ```
@@ -859,9 +829,7 @@ Enums and the `switch` statement are a powerful couple. Here's an example:
 enum Emotion {
     case happy, sad, angry, scared, surprised
 }
-```
 
-```swift
 switch robot.mood {
 case .angry:
     robot.destroyAllHumans()
