@@ -25,6 +25,7 @@
 - [Tuples](#tuples)
 - [Enumerations](#enums)
 - [Error Handling](#error-handling)
+- [Commenting](#commenting)
 - [Resources](#resources)
 
 ## <a name="variables"></a>Variables
@@ -933,6 +934,77 @@ catch let error {
 ```
 
 In the example above, the `processPayment(creditcard:)` function is marked with the `try` keyword. When an error occurs, the `catch` block is executed.
+
+## <a name="commenting"></a> Commenting
+
+There are 3 types of comments:
+
+**1. Documentary**: 
+Capture the history and development of the file. Their core purpose is to improve code maintainability. Most notable examples are:
+
+- Filename
+- Project name
+- Creation and modification dates
+- Author
+- Copyright
+- Version
+- History of changes
+- Dependencies
+- Documentary comments are wordy and error-prone if typed manually. Capture only those details, which are not available to version controls tools like git.
+
+We are dealing with documentary comments every day, often without realizing it:
+
+```swift
+//
+//  AppDelegate.swift
+//  SwiftCommenting
+//
+//  Created by Covalent on 28/7/20.
+//  Copyright © 2020 Covalent. All rights reserved.
+//
+```
+
+**2. Functional**:
+Add features to development process. Swift has 4 groups of functional comments:
+- Diagnostic directives: #warning, #error
+- Annotations: TODO, MARK, FIXME, 3rd-party-specific (swiftlint:disable, sourcery:begin:)
+- Bugfix notes: who fixed the bug, when and how. E.g. “Bugfix: This is how I fixed it. -VABU”
+- Performance improvement notes
+
+**3. Explanatory**:
+Summarize code or to explain the programmer’s intent. In other words, comments must answer the question why instead of what.
+
+Explanatory comments make the most sense in next scenarios:
+
+- Code does not fit project conventions
+- Algorithm description: name, complexity, documentation
+- Complex regular expressions
+- Workarounds
+
+**Comment Syntax**:
+Swift comments can be written in two formats:
+
+- Each line is preceded by a double slash (//)
+```swift
+// <#Description#>
+//
+// - Parameter value: <#value description#>
+// - Returns: <#return value description#>
+func isOdd(_ value: Int) -> Bool {
+    return abs(value) % 2 == 1
+}
+```
+- Javadoc-style block comments (/* … */)
+```swift
+/* <#Description#>
+
+  - Parameter value: <#value description#>
+  - Returns: <#return value description#>
+*/
+func isOdd(_ value: Int) -> Bool {
+    return abs(value) % 2 == 1
+}
+```
 
 ## <a name="resources"></a> Resources
 
