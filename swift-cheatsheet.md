@@ -939,8 +939,7 @@ In the example above, the `processPayment(creditcard:)` function is marked with 
 
 There are 3 types of comments:
 
-**1. Documentary**: 
-Capture the history and development of the file. Their core purpose is to improve code maintainability. Most notable examples are:
+**1. Documentary**: Describes the history and development of the file. Their core purpose is to improve code maintainability. Most notable examples are:
 
 - Filename
 - Project name
@@ -950,41 +949,42 @@ Capture the history and development of the file. Their core purpose is to improv
 - Version
 - History of changes
 - Dependencies
-- Documentary comments are wordy and error-prone if typed manually. Capture only those details, which are not available to version controls tools like git.
+
+Documentary comments are wordy and error-prone if typed manually. Capture only those details, which are not available to version controls tools like git.
 
 We are dealing with documentary comments every day, often without realizing it:
 
 ```swift
 //
 //  AppDelegate.swift
-//  SwiftCommenting
 //
-//  Created by Covalent on 28/7/20.
-//  Copyright © 2020 Covalent. All rights reserved.
+//  Created by John Doe on 28/7/20.
+//  Copyright © 2020 Acme Inc. All rights reserved.
 //
 ```
 
-**2. Functional**:
-Add features to development process. Swift has 4 groups of functional comments:
-- Diagnostic directives: #warning, #error
-- Annotations: TODO, MARK, FIXME, 3rd-party-specific (swiftlint:disable, sourcery:begin:)
-- Bugfix notes: who fixed the bug, when and how. E.g. “Bugfix: This is how I fixed it. -VABU”
+**2. Functional**: Adds information and special directives to the development process. Most notable examples in Swift are:
+
+- Diagnostic directives: `#warning`, `#error`
+- Annotations: `TODO`, `MARK`, `FIXME`, and 3rd-party-specific like `swiftlint:disable`
+- Notes about who fixed what bug when, e.g. "Bugfix: This is how I fixed it. -VABU"
 - Performance improvement notes
 
-**3. Explanatory**:
-Summarize code or to explain the programmer’s intent. In other words, comments must answer the question why instead of what.
+**3. Explanatory**: Summarizes code or explains the programmer's intent. Explanatory comments must answer the question _why_ instead of _what_.
 
-Explanatory comments make the most sense in next scenarios:
+Explanatory comments make the most sense in these scenarios:
 
 - Code does not fit project conventions
 - Algorithm description: name, complexity, documentation
 - Complex regular expressions
-- Workarounds
+- Workarounds and hacks
 
-**Comment Syntax**:
+### Comment Syntax
+
 Swift comments can be written in two formats:
 
-- Each line is preceded by a double slash (//)
+Each line is preceded by a double slash `//`
+
 ```swift
 // <#Description#>
 //
@@ -994,7 +994,9 @@ func isOdd(_ value: Int) -> Bool {
     return abs(value) % 2 == 1
 }
 ```
-- Javadoc-style block comments (/* … */)
+
+Javadoc-style block comments `/* … */`
+
 ```swift
 /* <#Description#>
 
