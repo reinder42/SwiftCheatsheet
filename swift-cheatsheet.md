@@ -279,7 +279,7 @@ obi_wan.mindTrick()
     
 ## <a name="protocols"></a> Protocols
 
-Protocols define a "contract" - set of methods and properties that a type must implement if it _conforms_ to the protocol.
+Protocols define a "contract"; a set of functions and properties that a type, like a class, must implement if it wants to _conform_ to the protocol.
 
 Protocols are declared like this:
 
@@ -301,7 +301,7 @@ struct TiePilot {
     var rank: String = "Lieutenant"
 }
 
-struct Stormtrooper: Healer {
+struct StormTrooper: Healer {
     var name: String = "TK-9091"
     var unit: String = "501st Legion"
     
@@ -310,6 +310,24 @@ struct Stormtrooper: Healer {
     }
 }
 ```
+
+You can also use protocols as types. Like this:
+
+```swift
+struct Squadron 
+{
+    var leader: EliteStormTrooper
+    var troopers: [StormTrooper]
+    var healer: Healer
+
+    func init(...) { ... }
+}
+
+var squad5 = Squadron(...)
+squad5.healer = StormTrooper(...)
+```
+
+In the above code, you can assign an object of type `StormTrooper` to the `healer` property of type `Healer`, because the `StormTrooper` type conforms to the `Healer` protocol. You can assign anything to it, as long as it conforms to the right protocol.
 
 ## <a name="control-flow"></a> Control Flow
 
