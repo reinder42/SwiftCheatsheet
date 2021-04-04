@@ -714,8 +714,8 @@ let latte:Set      = ["espresso", "milk"]
 ```
 
 Can we find the **union** (add items) of two coffees?
-```swift
 
+```swift
 machiato.union(latte)
 // ["espresso", "milk foam", "milk"]
 ```
@@ -731,14 +731,14 @@ Can we find the **intersection** (shared items) of two coffees?
 
 ```swift
 latte.intersection(cappuccino)
-["espresso", "milk"]
+// ["espresso", "milk"]
 ```
 
 Can we find the **difference** between two coffees?
-```swift
 
+```swift
 latte.symmetricDifference(americano)
-["milk", "water"]
+// ["milk", "water"]
 ```
 
 ## <a name="closures"></a> Closures
@@ -1046,7 +1046,7 @@ When you _use_ a function that can throw errors, you have to wrap it in a `do-tr
 do {
     try processPayment(creditcard: "1234.1234")
 }
-catch let error {
+catch {
     print(error)
 }
 ```
