@@ -392,14 +392,43 @@ if user == "Deep Thought" || meaningOfLife == 42
 } 
 ```
 
-Conditionals can be challenging to comprehend. Like this:
+Operators, like `&&`, have an order of _precedence_. This determines which operator has priority over another; which operator is evaluated before the other. Check this out:
 
 ```swift
-if c < a && b + c == a
-{
-    print("Will this ever happen?")
-}
+let a = 2 + 3 * 4
+// Output: 14
 ```
+
+The value of `a` is 14 and not 20, because multiplication precedes addition. A quick overview: `! * / + - && ||`. 
+
+You can change the order of operations with parentheses. Like this:
+
+```swift
+let a = (2 + 3) * 4
+// Output: 20
+```
+
+This groups the addition, which is now evaluated before the multiplication. Precedence rules are especially important when working with the logical `&&` (AND) and `||` (OR) operators. `&&` goes before `||`. Check this out:
+
+```swift
+let isPresident = true
+let threatLevel = 1
+let officerRank = 1
+
+if threatLevel > 5 && officerRank >= 3 || isPresident {
+    print("(1) FIRE ROCKETS!!!")
+}
+
+if threatLevel > 5 && (officerRank >= 3 || isPresident) {
+    print("(2) FIRE ROCKETS!!!")
+}
+// Output: (1) FIRE ROCKETS!!!
+```
+
+Notice how the result of the above conditionals changes based on the parentheses, while their operators and operands stay the same.
+
+- In the first conditional, the rockets are fired because `isPresident` is `true` and the entire conditional evaluates to `(false && false -> false) || true -> false || true -> true`.
+- In the second conditional, the rockets aren't fired even though `isPresident` is `true`. The entire conditional evaluates to `false && (false || true -> true) -> false && true -> false`.
 
 Swift has a special operator, called the _ternary conditional operator_. It's coded as `a ? b : c`. If `a` is `true`, the expression returns `b`, and if `a` is `false`, the expression returns `c`. It's the equivalent of this:
 
