@@ -419,26 +419,49 @@ Loops repeat stuff. It's that easy. Like this:
 for i in 1...5 {
     print(i)
 }
+// Output: 1 2 3 4 5
 ```
 
 This prints `1` to `5`, including `5`! You can also use the _half-open range operator_ `a..<b` to loop from `a` to `b` _not including_ `b`. Like this:
 
 ```swift
-for i in 1..<4 {
+for i in 1..<5 {
     print(i)
 }
-// Output: 1 2 3
+// Output: 1 2 3 4
+```
+
+You can use `continue` in a loop to skip to the next iteration, and `break` to quit looping altogether. Like this:
+
+```swift
+for i in 0..<10 
+{
+    if i.isMultiple(of: 2) {
+        continue
+    }
+
+    if i == 7 {
+        break
+    }
+
+    print(i)
+}
+// Output: 1 3 5
 ```
 
 When you don't know how many times a loop needs to run _exactly_, you can use a `while` loop. A `while` loop keeps iterating as long as its expression is `true`.
 
 ```swift
-while b <= 60 && b > 0
-{
-    print(b)
-    b -= 1
+var steps = 42
+
+while steps > 0 {
+    steps -= 9
+    print(steps)
 }
+// Output: 33 24 15 6 -3
 ```
+
+A `while` loop will evaluate its condition _at the top_ of the loop, so before the next iteration runs. The `repeat-while` evaluates its condition _at the end_ of the loop. It'll always run the first iteration, before evaluating the loop condition.
 
 ### <a name="switch"></a> Switch
 
