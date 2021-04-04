@@ -485,6 +485,14 @@ var hello = "Hello, \(jobTitle)"
 // Output: Hello, iOS App Developer
 ```
 
+You can also use the `+` addition operator to concatenate multiple strings:
+
+```swift
+let a  = "Never gonna"
+let b  = "give you up"
+let rr = a + " " + b
+```
+
 You can also turn an `Int` into a `String`:
 
 ```swift
