@@ -759,10 +759,43 @@ You call the closure like this:
 authenticate("Bob", 7)
 ```
 
+Closures have a type, that reflect the closure's parameters and its return type. The type of the closure for `authenticate` is `(String, Int) -> Bool`.
+
 If we had a user interface for authenticating a user, then we could pass the closure as a callback like this:
 
 ```swift
 let loginVC = MyLoginViewController(withAuthCallback: authenticate)
+```
+
+You always write a closure inside squiggly brackets `{ }`. Within the closure, you can declare zero, one or more parameters (with types), and optionally, a return type, followed by `in`. 
+
+Closure syntax is flexible, and has a few shorthands, which means you can leave out parts of the closure's declaration to make the code more concise.
+
+For example, the closure in this code:
+
+```swift
+let names = ["Zaphod", "Trillian", "Ford", "Arthur", "Marvin"]
+let sortedNames = names.sorted(by: <)
+```
+
+... is the same as this code:
+
+```swift
+names.sorted(by: { (s1: String, s2: String) -> Bool in
+    return s1 < s2
+})
+```
+
+... and that's the same as this, too:
+
+```swift
+names.sorted(by: { s1, s2 in s1 < s2 } )
+```
+
+... and even this, too:
+
+```swift
+names.sorted { $0 < $1 }
 ```
 
 Another use case for closures is multi-threading with Grand Central Dispatch. Like this:
