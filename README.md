@@ -445,9 +445,13 @@ while b <= 60 && b > 0
 A `switch` statement takes a value and compares it against one of several _cases_. It's similar to the `if-else if-else` conditional, and it's an elegant way of dealing with multiple states.
 
 An example:
-```swift
 
-let weather = ...
+```swift
+enum WeatherType {
+    case rain, clear, sunny, overcast, tsunami, earthquake, snow;
+}
+
+let weather = WeatherType.sunny
 
 switch weather 
 {
