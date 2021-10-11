@@ -195,7 +195,7 @@ You can also use _one-sided ranges_. They're especially useful in arrays.
 
 - `a...` in `array[a...]` defines a range from `a` to the end of the array
 - `...a` in `array[...a]` defines a range from the beginning of the array to `a`
-- `..<a` in `array[..<a` defines a range from the beginning of the array to `a`, not including `a` itself
+- `..<a` in `array[..<a]` defines a range from the beginning of the array to `a`, not including `a` itself
 
 ## <a name="oop"></a> Classes, Objects, Properties
 
