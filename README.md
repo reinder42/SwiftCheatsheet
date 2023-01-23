@@ -584,6 +584,13 @@ text[..<text.index(text.startIndex, offsetBy: 3)] // For
 text[text.index(text.endIndex, offsetBy: -4)...] // two!
 ```
 
+You can trim all whitespace at the start and end of a string like this:
+
+```swift
+let text = "  Forty-two!  "
+let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines) // Forty-two!
+```
+
 ## <a name="optionals"></a> Optionals
 
 _Optionals_ can either be `nil` or contain a value. You **must** always _unwrap_ an optional before you can use it.
